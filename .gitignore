@@ -21,3 +21,5 @@ npm-debug.log
 .classpath
 .project
 .settings
+/web/src/frontend/app/build/
+/web/src/main/webapp/static/
