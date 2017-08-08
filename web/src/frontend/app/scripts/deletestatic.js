@@ -1,7 +1,7 @@
+/* eslint-disable*/
 var glob = require("glob");
 var fs = require("fs");
 
-console.log("test");
 glob("../../main/webapp/static/**/*.*",function(err,files){
     if (err) throw err;
     files.forEach(function(item,index,array){
