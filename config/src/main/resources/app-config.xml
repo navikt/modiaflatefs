@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://appconfig.aura.nav.no" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://appconfig.aura.nav.no http://maven.adeo.no/xsd/appconfig.xsd">
+
+    <name>modiaoppstartsbilde</name>
+
+    <selftest>
+        <path>modiaoppstartsbilde/internal/selftest</path>
+        <humanReadablePath>modiaoppstartsbilde/internal/selftest</humanReadablePath>
+    </selftest>
+
+    <artifacts>
+        <ear groupId="no.nav.brukerdialog" artifactId="modiaoppstartsbilde-jee"/>
+    </artifacts>
+
+
+
+    <resources>
+        <baseUrl alias="oppfolging.redirect-url" mapToProperty="oidc-redirect"/>
+        <baseUrl alias="isso-host"/>
+        <baseUrl alias="isso-jwks"/>
+        <baseUrl alias="isso-issuer"/>
+        <credential alias="isso-rp-user"/>
+        <baseUrl alias="isso.isalive"/>
+
+        <baseUrl alias="veilarbveilederPingURL" />
+        <baseUrl alias="modiacontextholderPingURL" />
+
+        <fileLibrary alias="modiaoppstartsbilde.ledetekster" mapToProperty="folder.ledetekster" />
+    </resources>
+
+    <loadBalancer isAlive="/modiaoppstartsbilde/internal/isAlive" />
+    <security serviceUserResourceAlias="srvmodiaoppstartsbilde">
+        <logins/>
+    </security>
+</application>
