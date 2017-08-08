@@ -8,7 +8,7 @@
 *.log
 
 target
-
+web/src/**/*.css
 **/webapp/css/**/*
 **/webapp/img/**/*
 **/webapp/build/**/*
