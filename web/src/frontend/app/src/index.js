@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.css'; // eslint-disable-line import/no-unresolved
 import App from './app';
+import registerServiceWorker from './registerServiceWorker';
 
 if (process.env.NODE_ENV !== 'production') {
     console.log('Med mock'); // eslint-disable-line no-console
@@ -9,3 +10,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 ReactDOM.render(<App />, document.getElementById('application'));
+registerServiceWorker();
