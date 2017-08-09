@@ -17,7 +17,7 @@
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-intl": "2.3.0",
-    "react-scripts": "1.0.10",
+    "react-scripts": "1.0.11",
     "prop-types": "15.5.10"
   },
   "scripts": {
@@ -36,8 +36,9 @@
   "devDependencies": {
     "autoless": "0.1.7",
     "copyfiles": "1.2.0",
-    "eslint": "3.19.0",
+    "eslint": "4.4.1",
     "eslint-config-airbnb": "15.1.0",
+    "eslint-import-resolver-node": "0.3.1",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
