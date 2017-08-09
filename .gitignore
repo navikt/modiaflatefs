@@ -21,7 +21,7 @@ npm-debug.log
 .classpath
 .project
 .settings
-/web/src/frontend/app/build/
+/web/src/frontend/build
 /web/src/main/webapp/static/
 /web/src/main/webapp/asset-manifest.json
 /web/src/main/webapp/service-worker.js

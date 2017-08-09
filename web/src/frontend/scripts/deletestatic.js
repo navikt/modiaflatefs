@@ -2,7 +2,7 @@
 var glob = require("glob");
 var fs = require("fs");
 
-glob("../../main/webapp/static/**/*.*",function(err,files){
+glob("../main/webapp/static/**/*.*",function(err,files){
     if (err) throw err;
     files.forEach(function(item,index,array){
         console.log(item + " found");

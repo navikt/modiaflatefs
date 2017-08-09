@@ -124,7 +124,21 @@
                                     install
                                 </argument>
                             </arguments>
-                            <workingDirectory>src/frontend/app</workingDirectory>
+                            <workingDirectory>src/frontend</workingDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>JS test</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>test</phase>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>test</argument>
+                            </arguments>
+                            <workingDirectory>src/frontend</workingDirectory>
                         </configuration>
                     </execution>
                     <execution>
@@ -139,7 +153,7 @@
                                 <argument>run</argument>
                                 <argument>eslint</argument>
                             </arguments>
-                            <workingDirectory>src/frontend/app</workingDirectory>
+                            <workingDirectory>src/frontend</workingDirectory>
                         </configuration>
                     </execution>
                     <execution>
@@ -154,7 +168,7 @@
                                 <argument>run</argument>
                                 <argument>build</argument>
                             </arguments>
-                            <workingDirectory>src/frontend/app</workingDirectory>
+                            <workingDirectory>src/frontend</workingDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -174,7 +188,7 @@
                     src/main/webapp/**/*
                 </sonar.coverage.exclusions>
                 <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-                <sonar.sources>src/frontend/app</sonar.sources>
+                <sonar.sources>src/frontend</sonar.sources>
             </properties>
         </profile>
     </profiles>
