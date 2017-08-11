@@ -16,7 +16,7 @@ public class PingConfig {
     public Pingable modiacontextholderPing() throws IOException {
         return () -> {
             String mchUrl = System.getProperty("modiacontextholderPingURL.url");
-            Pingable.Ping.PingMetadata metadata = new Pingable.Ping.PingMetadata("Modiacontextholder via " + mchUrl, "Sjekker om is-alive til modiacontextholder svarer", true);
+            Pingable.Ping.PingMetadata metadata = new Pingable.Ping.PingMetadata("Modiacontextholder via " + mchUrl, "Sjekker om is-alive til modiacontextholder svarer", false);
 
             try {
                 HttpURLConnection connection = (HttpURLConnection)(new URL(mchUrl)).openConnection();
