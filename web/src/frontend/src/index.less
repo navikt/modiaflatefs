@@ -37,6 +37,7 @@ body {
         position:relative;
         display: inline-block;
 
+
         &:after {
             pointer-events: none;
             content: "";
@@ -63,6 +64,13 @@ body {
         height: 34px;
         border: 1px solid #7f756c;
         -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+
+        &::-ms-expand {
+            display: none; // Skjuler pil i IE10
+        }
     }
 
     .lenke {
