@@ -9,10 +9,10 @@
         <version>3.2</version>
     </parent>
 
-    <name>modiaoppstartsbilde</name>
+    <name>modia</name>
 
     <groupId>no.nav.brukerdialog</groupId>
-    <artifactId>modiaoppstartsbilde</artifactId>
+    <artifactId>modia</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 

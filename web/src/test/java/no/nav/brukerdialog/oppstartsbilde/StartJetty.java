@@ -10,7 +10,7 @@ import static no.nav.sbl.dialogarena.common.jetty.JettyStarterUtils.*;
 
 public class StartJetty {
 
-    public static final String CONTEXT_NAME = "modiaoppstartsbilde";
+    public static final String CONTEXT_NAME = "modia";
     public static final int PORT = 8930;
 
 

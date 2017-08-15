@@ -19,7 +19,7 @@ function Oppstartsbilde({ enheter, valgtEnhet, velgEnhet, veilederinfo }) {
         <div>
             <div className="velkomstmelding blokk-l">
                 <FormattedMessage
-                    id="modiaoppstartsbilde.velkomstmelding"
+                    id="modia.velkomstmelding"
                     values={{ navn: veilederinfo.veileder.navn, ident: veilederinfo.veileder.ident }}
                 />
             </div>

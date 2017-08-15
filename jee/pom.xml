@@ -3,20 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>modiaoppstartsbilde</artifactId>
+        <artifactId>modia</artifactId>
         <groupId>no.nav.brukerdialog</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>modiaoppstartsbilde-jee</artifactId>
+    <artifactId>modia-jee</artifactId>
     <name>${project.artifactId}</name>
     <packaging>ear</packaging>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>modiaoppstartsbilde-web</artifactId>
+            <artifactId>modia-web</artifactId>
             <version>${project.version}</version>
             <type>war</type>
             <scope>runtime</scope>
@@ -32,9 +32,9 @@
                     <modules>
                         <webModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>modiaoppstartsbilde-web</artifactId>
-                            <contextRoot>/modiaoppstartsbilde</contextRoot>
-                            <bundleFileName>modiaoppstartsbilde-web.war</bundleFileName>
+                            <artifactId>modia-web</artifactId>
+                            <contextRoot>/modia</contextRoot>
+                            <bundleFileName>modia-web.war</bundleFileName>
                         </webModule>
                     </modules>
                     <encoding>UTF-8</encoding>

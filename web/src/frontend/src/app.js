@@ -37,7 +37,7 @@ class App extends Component {
         const { enheter, valgtEnhet, tekster, veilederinfo } = this.state;
         return (
             <IntlProvider defaultLocale="nb" locale="nb" messages={tekster.data.nb}>
-                <div className="modiaoppstartsbilde blokk-xl">
+                <div className="modia blokk-xl">
                     <NAVLogo />
                     <div className="tittel blokk-xl">Modia</div>
                     <Innholdslaster avhengigheter={[enheter, tekster, veilederinfo]}>

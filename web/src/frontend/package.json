@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/modiaoppstartsbilde",
+  "homepage": "/modia",
   "proxy": "http://localhost:8080",
   "dependencies": {
     "classnames": "2.2.5",

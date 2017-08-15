@@ -45,7 +45,7 @@ export function hentEnheter() {
 }
 
 export function hentTekster() {
-    return fetchToJson('/modiaoppstartsbilde/api/tekster');
+    return fetchToJson('/modia/api/tekster');
 }
 
 export function notifyModiaContextHolder({ enhet }) {
