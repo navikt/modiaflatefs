@@ -45,7 +45,7 @@ export function hentEnheter() {
 }
 
 export function hentTekster() {
-    return fetchToJson('/modia/api/tekster');
+    return fetchToJson('/modiaflatefs/api/tekster');
 }
 
 export function notifyModiaContextHolder({ enhet }) {

@@ -9,10 +9,10 @@
         <version>3.2</version>
     </parent>
 
-    <name>modia</name>
+    <name>modiaflatefs</name>
 
     <groupId>no.nav.brukerdialog</groupId>
-    <artifactId>modia</artifactId>
+    <artifactId>modiaflatefs</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -41,8 +41,8 @@
     </dependencyManagement>
 
     <scm>
-        <developerConnection>scm:git:http://stash.devillo.no/scm/dial/modia-oppstartsbilde.git</developerConnection>
-        <url>http://http://stash.devillo.no/projects/DIAL/repos/modia-oppstartsbilde/browse</url>
+        <developerConnection>scm:git:http://stash.devillo.no/scm/dial/modiaflatefs.git</developerConnection>
+        <url>http://http://stash.devillo.no/projects/DIAL/repos/modiaflatefs/browse</url>
         <tag>HEAD</tag>
     </scm>
 

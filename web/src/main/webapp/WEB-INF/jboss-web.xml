@@ -1,4 +1,4 @@
 <jboss-web>
-    <context-root>modia</context-root>
+    <context-root>modiaflatefs</context-root>
     <security-domain>jaspitest</security-domain>
 </jboss-web>

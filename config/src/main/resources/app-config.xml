@@ -2,15 +2,15 @@
 <application xmlns="http://appconfig.aura.nav.no" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://appconfig.aura.nav.no http://maven.adeo.no/xsd/appconfig.xsd">
 
-    <name>modia</name>
+    <name>modiaflatefs</name>
 
     <selftest>
-        <path>modia/internal/selftest</path>
-        <humanReadablePath>modia/internal/selftest</humanReadablePath>
+        <path>modiaflatefs/internal/selftest</path>
+        <humanReadablePath>modiaflatefs/internal/selftest</humanReadablePath>
     </selftest>
 
     <artifacts>
-        <ear groupId="no.nav.brukerdialog" artifactId="modia-jee"/>
+        <ear groupId="no.nav.brukerdialog" artifactId="modiaflatefs-jee"/>
     </artifacts>
 
 
@@ -26,11 +26,11 @@
         <baseUrl alias="veilarbveilederPingURL" />
         <baseUrl alias="modiacontextholderPingURL" />
 
-        <fileLibrary alias="modia.ledetekster" mapToProperty="folder.ledetekster" />
+        <fileLibrary alias="modiaflatefs.ledetekster" mapToProperty="folder.ledetekster" />
     </resources>
 
-    <loadBalancer isAlive="/modia/internal/isAlive" />
-    <security serviceUserResourceAlias="srvmodia">
+    <loadBalancer isAlive="/modiaflatefs/internal/isAlive" />
+    <security serviceUserResourceAlias="srvmodiaflatefs">
         <logins/>
     </security>
 </application>

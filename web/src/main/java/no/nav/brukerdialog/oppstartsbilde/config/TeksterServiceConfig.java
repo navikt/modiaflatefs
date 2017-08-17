@@ -15,6 +15,6 @@ public class TeksterServiceConfig {
 
     @Bean
     public TeksterAPI teksterApi() {
-        return new TeksterAPI(ledeteksterPath + "/tekster", "modia");
+        return new TeksterAPI(ledeteksterPath + "/tekster", "modiaflatefs");
     }
 }
