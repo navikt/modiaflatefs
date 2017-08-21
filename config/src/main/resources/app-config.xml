@@ -33,4 +33,8 @@
     <security serviceUserResourceAlias="srvmodiaflatefs">
         <logins/>
     </security>
+
+    <serverOptions>
+        <memoryParameters resourceAlias="veilarb-flate-memparams"/>
+    </serverOptions>
 </application>
