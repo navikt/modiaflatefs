@@ -16,7 +16,7 @@
 
 
     <resources>
-        <baseUrl alias="veilarblogin.redirect-url" mapToProperty="oidc-redirect"/>
+        <rest alias="veilarblogin.redirect-url" mapToProperty="oidc-redirect" />
         <baseUrl alias="isso-host"/>
         <baseUrl alias="isso-jwks"/>
         <baseUrl alias="isso-issuer"/>
