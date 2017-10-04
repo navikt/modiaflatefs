@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IntlProvider, addLocaleData } from 'react-intl';
+import {IntlProvider, addLocaleData, FormattedMessage} from 'react-intl';
 import nb from 'react-intl/locale-data/nb';
 import Oppstartsbilde from './oppstartsbilde';
 import { initialState, STATUS } from './utils';
@@ -39,7 +39,9 @@ class App extends Component {
             <IntlProvider defaultLocale="nb" locale="nb" messages={tekster.data.nb}>
                 <div className="modiaflatefs blokk-xl">
                     <NAVLogo />
-                    <div className="tittel blokk-xl">Modiaflatefs</div>
+                    <div className="tittel blokk-xl">
+                        <FormattedMessage id="modiaoppstartsbilde.tittel"/>
+                    </div>
                     <Innholdslaster avhengigheter={[enheter, tekster, veilederinfo]}>
                         <Oppstartsbilde
                             enheter={enheter.enhetliste}
