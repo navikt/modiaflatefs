@@ -13,7 +13,7 @@ function Oppstartsbilde({ enheter, valgtEnhet, velgEnhet, veilederinfo }) {
 
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
     const miaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/mia');
-    const syfoUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/moteoversikt');
+    const syfoUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
 
     return (
         <div>
