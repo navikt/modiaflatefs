@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {IntlProvider, addLocaleData, FormattedMessage} from 'react-intl';
+import { IntlProvider, addLocaleData, FormattedMessage } from 'react-intl';
 import nb from 'react-intl/locale-data/nb';
+import Feilside500 from './feilsider/500';
 import Oppstartsbilde from './oppstartsbilde';
 import { initialState, STATUS } from './utils';
 import NAVLogo from './nav-logo';
@@ -9,23 +10,30 @@ import { hentVeilederinfo, hentEnheter, hentTekster, notifyModiaContextHolder } 
 
 addLocaleData(nb);
 
-class App extends Component {
-    componentWillMount() {
+class Application extends Component {
+    constructor(props) {
+        super(props);
         this.state = initialState;
+    }
 
+    componentDidMount() {
         hentEnheter()
             .then((res) => this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } }))
-            .catch((error) => this.setState({ enheter: { status: STATUS.ERROR, data: error } }));
+            .catch(() => this.setFeilet());
 
         hentVeilederinfo()
             .then((res) => this.setState({ veilederinfo: { veileder: res, status: STATUS.OK } }))
-            .catch((error) => this.setState({ veilederinfo: { status: STATUS.ERROR, data: error } }));
+            .catch(() => this.setFeilet());
 
         hentTekster()
             .then((res) => this.setState({ tekster: { data: res, status: STATUS.OK } }))
-            .catch((error) => this.setState({ tekster: { status: STATUS.ERROR, data: error } }));
+            .catch(() => this.setFeilet());
 
         this.changeEnhet = this.changeEnhet.bind(this);
+    }
+
+    setFeilet() {
+        this.setState({ feilet: true });
     }
 
     changeEnhet(enhetId) {
@@ -34,26 +42,30 @@ class App extends Component {
     }
 
     render() {
-        const { enheter, valgtEnhet, tekster, veilederinfo } = this.state;
+        const { enheter, valgtEnhet, tekster, veilederinfo, feilet } = this.state;
+
         return (
-            <IntlProvider defaultLocale="nb" locale="nb" messages={tekster.data.nb}>
-                <div className="modiaflatefs blokk-xl">
-                    <NAVLogo />
-                    <div className="tittel blokk-xl">
-                        <FormattedMessage id="modiaoppstartsbilde.tittel"/>
+            feilet ?
+                <Feilside500 />
+                :
+                <IntlProvider defaultLocale="nb" locale="nb" messages={tekster.data.nb}>
+                    <div className="modiaflatefs blokk-xl">
+                        <NAVLogo />
+                        <div className="tittel blokk-xl">
+                            <FormattedMessage id="modiaoppstartsbilde.tittel" />
+                        </div>
+                        <Innholdslaster avhengigheter={[enheter, tekster, veilederinfo]}>
+                            <Oppstartsbilde
+                                enheter={enheter.enhetliste}
+                                valgtEnhet={valgtEnhet}
+                                velgEnhet={this.changeEnhet}
+                                veilederinfo={veilederinfo}
+                            />
+                        </Innholdslaster>
                     </div>
-                    <Innholdslaster avhengigheter={[enheter, tekster, veilederinfo]}>
-                        <Oppstartsbilde
-                            enheter={enheter.enhetliste}
-                            valgtEnhet={valgtEnhet}
-                            velgEnhet={this.changeEnhet}
-                            veilederinfo={veilederinfo}
-                        />
-                    </Innholdslaster>
-                </div>
-            </IntlProvider>
+                </IntlProvider>
         );
     }
 }
 
-export default App;
+export default Application;

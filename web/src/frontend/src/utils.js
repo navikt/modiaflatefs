@@ -21,7 +21,8 @@ export const initialState = {
                 spinner: 'spinner'
             }
         }
-    }
+    },
+    feilet: false
 };
 
 function finnMiljoStreng() {
