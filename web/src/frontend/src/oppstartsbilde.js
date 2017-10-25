@@ -5,11 +5,11 @@ import Lenker from './lenker';
 import { erstattMiljoPlaceholder } from './utils';
 
 
-function Oppstartsbilde({ enheter, valgtEnhet, velgEnhet, veilederinfo }) {
+function Oppstartsbilde({ enheter, aktivEnhet = undefined, settAktivEnhet, veilederinfo }) {
     if (!enheter) {
         return null;
     }
-    const enhet = valgtEnhet || enheter[0].enhetId;
+    const enhet = aktivEnhet || enheter[0].enhetId;
 
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
     const miaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/mia');
@@ -24,7 +24,7 @@ function Oppstartsbilde({ enheter, valgtEnhet, velgEnhet, veilederinfo }) {
                 />
             </div>
             <div className="enhetsvelger__wrapper">
-                <select className="enhetsvelger blokk-l" onBlur={(event) => (velgEnhet(event.currentTarget.value))}>
+                <select className="enhetsvelger blokk-l" onBlur={(event) => (settAktivEnhet(event.currentTarget.value))}>
                     {enheter.map((e) =>
                         <option key={e.enhetId} value={e.enhetId}>{`${e.enhetId} ${e.navn}`}</option>)}
                 </select>
@@ -42,13 +42,9 @@ function Oppstartsbilde({ enheter, valgtEnhet, velgEnhet, veilederinfo }) {
 
 Oppstartsbilde.propTypes = {
     enheter: PT.arrayOf(PT.object).isRequired,
-    valgtEnhet: PT.string,
-    velgEnhet: PT.func.isRequired,
+    aktivEnhet: PT.string,
+    settAktivEnhet: PT.func.isRequired,
     veilederinfo: PT.shape({ navn: PT.string, ident: PT.string }).isRequired
-};
-
-Oppstartsbilde.defaultProps = {
-    valgtEnhet: undefined
 };
 
 export default Oppstartsbilde;

@@ -29,20 +29,20 @@ class Application extends Component {
             .then((res) => this.setState({ tekster: { data: res, status: STATUS.OK } }))
             .catch(() => this.setFeilet());
 
-        this.changeEnhet = this.changeEnhet.bind(this);
+        this.settAktivEnhet = this.settAktivEnhet.bind(this);
     }
 
     setFeilet() {
         this.setState({ feilet: true });
     }
 
-    changeEnhet(enhetId) {
-        this.setState({ valgtEnhet: enhetId });
+    settAktivEnhet(enhetId) {
+        this.setState({ aktivEnhet: enhetId });
         notifyModiaContextHolder({ enhet: enhetId });
     }
 
     render() {
-        const { enheter, valgtEnhet, tekster, veilederinfo, feilet } = this.state;
+        const { enheter, aktivEnhet, tekster, veilederinfo, feilet } = this.state;
 
         return (
             feilet ?
@@ -57,8 +57,8 @@ class Application extends Component {
                         <Innholdslaster avhengigheter={[enheter, tekster, veilederinfo]}>
                             <Oppstartsbilde
                                 enheter={enheter.enhetliste}
-                                valgtEnhet={valgtEnhet}
-                                velgEnhet={this.changeEnhet}
+                                aktivEnhet={aktivEnhet}
+                                settAktivEnhet={this.settAktivEnhet}
                                 veilederinfo={veilederinfo}
                             />
                         </Innholdslaster>
