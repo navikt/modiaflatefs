@@ -6,7 +6,7 @@ import Oppstartsbilde from './oppstartsbilde';
 import { initialState, STATUS } from './utils';
 import NAVLogo from './nav-logo';
 import Innholdslaster from './innholdslaster';
-import { hentVeilederinfo, hentEnheter, hentTekster, notifyModiaContextHolder } from './api';
+import { hentVeilederinfo, hentEnheter, hentTekster, notifyModiaContextHolder } from './api/api';
 
 addLocaleData(nb);
 
