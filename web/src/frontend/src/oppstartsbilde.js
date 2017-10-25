@@ -6,9 +6,6 @@ import { erstattMiljoPlaceholder } from './utils';
 
 
 function Oppstartsbilde({ enheter, aktivEnhet = undefined, settAktivEnhet, veilederinfo }) {
-    if (!enheter) {
-        return null;
-    }
     const enhet = aktivEnhet || enheter[0].enhetId;
 
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
