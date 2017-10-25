@@ -19,21 +19,21 @@ class Application extends Component {
     componentDidMount() {
         hentEnheter()
             .then((res) => this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } }))
-            .catch(() => this.setFeilet());
+            .catch(() => this.apiKallFeilet());
 
         hentVeilederinfo()
             .then((res) => this.setState({ veilederinfo: { veileder: res, status: STATUS.OK } }))
-            .catch(() => this.setFeilet());
+            .catch(() => this.apiKallFeilet());
 
         hentTekster()
             .then((res) => this.setState({ tekster: { data: res, status: STATUS.OK } }))
-            .catch(() => this.setFeilet());
+            .catch(() => this.apiKallFeilet());
 
         this.settAktivEnhet = this.settAktivEnhet.bind(this);
     }
 
-    setFeilet() {
-        this.setState({ feilet: true });
+    apiKallFeilet() {
+        this.setState({ apiKallFeilet: true });
     }
 
     settAktivEnhet(enhetId) {
@@ -42,10 +42,10 @@ class Application extends Component {
     }
 
     render() {
-        const { enheter, aktivEnhet, tekster, veilederinfo, feilet } = this.state;
+        const { enheter, aktivEnhet, tekster, veilederinfo, apiKallFeilet } = this.state;
 
         return (
-            feilet ?
+            apiKallFeilet ?
                 <Feilside500 />
                 :
                 <IntlProvider defaultLocale="nb" locale="nb" messages={tekster.data.nb}>

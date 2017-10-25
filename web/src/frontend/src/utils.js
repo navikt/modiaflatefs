@@ -22,7 +22,7 @@ export const initialState = {
             }
         }
     },
-    feilet: false
+    apiKallFeilet: false
 };
 
 function finnMiljoStreng() {
