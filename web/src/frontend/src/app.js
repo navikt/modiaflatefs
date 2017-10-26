@@ -3,6 +3,7 @@ import { IntlProvider, addLocaleData, FormattedMessage } from 'react-intl';
 import nb from 'react-intl/locale-data/nb';
 import Feilside500 from './feilsider/500';
 import Oppstartsbilde from './oppstartsbilde';
+import { STATUS } from './utils';
 import { initialState } from './modell';
 import NAVLogo from './nav-logo';
 import Innholdslaster from './innholdslaster';
@@ -18,14 +19,12 @@ class Application extends Component {
 
     componentDidMount() {
         hentEnheter()
+            .then((res) => new Promise((success) => {
+                this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } });
+                success(res);
+            }))
             .then((res) => {
-                return new Promise((success) => {
-                    this.setState({enheter: { status: STATUS.OK, enhetliste: res.enhetliste }});
-                    success(res);
-                });
-            })
-            .then((res) => {
-                if(this.state.aktivEnhet.status === STATUS.PENDING) {
+                if (this.state.aktivEnhet.status === STATUS.PENDING) {
                     this.settInitiellAktivEnhet(res.enhetliste[0]);
                 }
             })
@@ -42,22 +41,18 @@ class Application extends Component {
         this.settAktivEnhet = this.settAktivEnhet.bind(this);
     }
 
-    apiKallFeilet() {
-        this.setState({ apiKallFeilet: true });
-    }
-
     settInitiellAktivEnhet(enhet) {
         this.setState({
             aktivEnhet: {
                 status: STATUS.OK,
-                enhet: enhet
+                enhet
             }
         });
         notifyModiaContextHolder({ enhet: enhet.enhetId });
     }
 
     settAktivEnhet(enhetId) {
-        const valgtEnhet = this.state.enheter.enhetliste.find(enhet => enhet.enhetId === enhetId);
+        const valgtEnhet = this.state.enheter.enhetliste.find((enhet) => enhet.enhetId === enhetId);
         this.setState({
             aktivEnhet: {
                 status: STATUS.OK,
@@ -65,6 +60,10 @@ class Application extends Component {
             }
         });
         notifyModiaContextHolder({ enhet: enhetId });
+    }
+
+    apiKallFeilet() {
+        this.setState({ apiKallFeilet: true });
     }
 
     render() {

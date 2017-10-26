@@ -3,6 +3,7 @@ import PT from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import Lenker from './lenker';
 import { erstattMiljoPlaceholder } from './utils';
+import { aktivEnhetShape, enhetlisteShape } from './modell';
 
 
 function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
@@ -11,6 +12,20 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
     const miaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/mia');
     const syfoUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
+
+    const handleOnChange = (event) => {
+        const nyAktivEnhetId = event.currentTarget.value;
+        if (nyAktivEnhetId !== enhetId) {
+            settAktivEnhet(nyAktivEnhetId);
+        }
+    };
+
+    const handleOnBlur = (event) => {
+        const nyAktivEnhetId = event.currentTarget.value;
+        if (nyAktivEnhetId !== enhetId) {
+            settAktivEnhet(nyAktivEnhetId);
+        }
+    };
 
     return (
         <div>
@@ -23,15 +38,17 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
             <div className="enhetsvelger__wrapper">
                 <select
                     className="enhetsvelger blokk-l"
-                    onChange={(event) => (settAktivEnhet(event.currentTarget.value))}
-                    defaultValue={enheter.find(e => e.enhetId === enhetId)}>
+                    onChange={(event) => (handleOnChange(event))}
+                    onBlur={(event) => (handleOnBlur(event))}
+                    defaultValue={enheter.find((e) => e.enhetId === enhetId)}
+                >
                     {enheter.map((e) =>
-                        <option
+                        (<option
                             key={e.enhetId}
                             value={e.enhetId}
                         >
                             {`${e.enhetId} ${e.navn}`}
-                        </option>
+                        </option>)
                     )}
                 </select>
             </div>
@@ -47,8 +64,8 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
 }
 
 Oppstartsbilde.propTypes = {
-    enheter: PT.arrayOf(PT.object).isRequired,
-    aktivEnhet: PT.object.isRequired,
+    enheter: enhetlisteShape.isRequired,
+    aktivEnhet: aktivEnhetShape.isRequired,
     settAktivEnhet: PT.func.isRequired,
     veilederinfo: PT.shape({ navn: PT.string, ident: PT.string }).isRequired
 };

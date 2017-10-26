@@ -1,3 +1,6 @@
+import PT from 'prop-types';
+import { STATUS } from './utils';
+
 export const initialState = {
     enheter: {
         status: STATUS.PENDING,
@@ -21,3 +24,15 @@ export const initialState = {
         enhet: undefined
     }
 };
+
+const enhetShape = PT.shape({
+    enhetId: PT.string,
+    navn: PT.string
+});
+
+export const aktivEnhetShape = PT.shape({
+    status: PT.oneOf([STATUS.PENDING, STATUS.OK]),
+    enhet: enhetShape
+});
+
+export const enhetlisteShape = PT.arrayOf(enhetShape);
