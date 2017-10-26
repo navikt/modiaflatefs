@@ -23,7 +23,7 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
             <div className="enhetsvelger__wrapper">
                 <select
                     className="enhetsvelger blokk-l"
-                    onBlur={(event) => (settAktivEnhet(event.currentTarget.value))}
+                    onChange={(event) => (settAktivEnhet(event.currentTarget.value))}
                     defaultValue={enheter.find(e => e.enhetId === enhetId)}>
                     {enheter.map((e) =>
                         <option
