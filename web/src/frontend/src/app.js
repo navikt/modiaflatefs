@@ -18,7 +18,17 @@ class Application extends Component {
 
     componentDidMount() {
         hentEnheter()
-            .then((res) => this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } }))
+            .then((res) => {
+                return new Promise((success) => {
+                    this.setState({enheter: { status: STATUS.OK, enhetliste: res.enhetliste }});
+                    success(res);
+                });
+            })
+            .then((res) => {
+                if(this.state.aktivEnhet.status === STATUS.PENDING) {
+                    this.settInitiellAktivEnhet(res.enhetliste[0]);
+                }
+            })
             .catch(() => this.apiKallFeilet());
 
         hentVeilederinfo()
@@ -36,14 +46,29 @@ class Application extends Component {
         this.setState({ apiKallFeilet: true });
     }
 
+    settInitiellAktivEnhet(enhet) {
+        this.setState({
+            aktivEnhet: {
+                status: STATUS.OK,
+                enhet: enhet
+            }
+        });
+        notifyModiaContextHolder({ enhet: enhet.enhetId });
+    }
+
     settAktivEnhet(enhetId) {
-        this.setState({ aktivEnhet: enhetId });
+        const valgtEnhet = this.state.enheter.enhetliste.find(enhet => enhet.enhetId === enhetId);
+        this.setState({
+            aktivEnhet: {
+                status: STATUS.OK,
+                enhet: valgtEnhet
+            }
+        });
         notifyModiaContextHolder({ enhet: enhetId });
     }
 
     render() {
         const { enheter, aktivEnhet, tekster, veilederinfo, apiKallFeilet } = this.state;
-
         return (
             apiKallFeilet ?
                 <Feilside500 />
@@ -54,7 +79,7 @@ class Application extends Component {
                         <div className="tittel blokk-xl">
                             <FormattedMessage id="modiaoppstartsbilde.tittel" />
                         </div>
-                        <Innholdslaster avhengigheter={[enheter, tekster, veilederinfo]}>
+                        <Innholdslaster avhengigheter={[enheter, tekster, veilederinfo, aktivEnhet]}>
                             <Oppstartsbilde
                                 enheter={enheter.enhetliste}
                                 aktivEnhet={aktivEnhet}

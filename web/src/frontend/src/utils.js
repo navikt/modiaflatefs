@@ -22,7 +22,11 @@ export const initialState = {
             }
         }
     },
-    apiKallFeilet: false
+    apiKallFeilet: false,
+    aktivEnhet: {
+        status: STATUS.PENDING,
+        enhet: undefined
+    }
 };
 
 function finnMiljoStreng() {

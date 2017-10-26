@@ -5,8 +5,8 @@ import Lenker from './lenker';
 import { erstattMiljoPlaceholder } from './utils';
 
 
-function Oppstartsbilde({ enheter, aktivEnhet = undefined, settAktivEnhet, veilederinfo }) {
-    const enhet = aktivEnhet || enheter[0].enhetId;
+function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
+    const enhetId = aktivEnhet.enhet.enhetId;
 
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
     const miaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/mia');
@@ -21,15 +21,24 @@ function Oppstartsbilde({ enheter, aktivEnhet = undefined, settAktivEnhet, veile
                 />
             </div>
             <div className="enhetsvelger__wrapper">
-                <select className="enhetsvelger blokk-l" onBlur={(event) => (settAktivEnhet(event.currentTarget.value))}>
+                <select
+                    className="enhetsvelger blokk-l"
+                    onBlur={(event) => (settAktivEnhet(event.currentTarget.value))}
+                    defaultValue={enheter.find(e => e.enhetId === enhetId)}>
                     {enheter.map((e) =>
-                        <option key={e.enhetId} value={e.enhetId}>{`${e.enhetId} ${e.navn}`}</option>)}
+                        <option
+                            key={e.enhetId}
+                            value={e.enhetId}
+                        >
+                            {`${e.enhetId} ${e.navn}`}
+                        </option>
+                    )}
                 </select>
             </div>
             <Lenker
                 arbeidsmarked={miaUrl}
-                enhet={`/veilarbportefoljeflatefs/enhet?enhet=${enhet}`}
-                minoversikt={`/veilarbportefoljeflatefs/portefolje?enhet=${enhet}`}
+                enhet={`/veilarbportefoljeflatefs/enhet?enhet=${enhetId}`}
+                minoversikt={`/veilarbportefoljeflatefs/portefolje?enhet=${enhetId}`}
                 modia={modiaUrl}
                 sykefravaer={syfoUrl}
             />
@@ -39,7 +48,7 @@ function Oppstartsbilde({ enheter, aktivEnhet = undefined, settAktivEnhet, veile
 
 Oppstartsbilde.propTypes = {
     enheter: PT.arrayOf(PT.object).isRequired,
-    aktivEnhet: PT.string,
+    aktivEnhet: PT.object.isRequired,
     settAktivEnhet: PT.func.isRequired,
     veilederinfo: PT.shape({ navn: PT.string, ident: PT.string }).isRequired
 };
