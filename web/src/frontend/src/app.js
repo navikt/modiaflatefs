@@ -19,11 +19,8 @@ class Application extends Component {
 
     componentDidMount() {
         hentEnheter()
-            .then((res) => new Promise((success) => {
-                this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } });
-                success(res);
-            }))
             .then((res) => {
+                this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } });
                 if (this.state.aktivEnhet.status === STATUS.PENDING) {
                     this.settInitiellAktivEnhet(res.enhetliste[0]);
                 }
