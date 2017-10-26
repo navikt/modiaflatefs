@@ -3,7 +3,7 @@ import { IntlProvider, addLocaleData, FormattedMessage } from 'react-intl';
 import nb from 'react-intl/locale-data/nb';
 import Feilside500 from './feilsider/500';
 import Oppstartsbilde from './oppstartsbilde';
-import { initialState, STATUS } from './utils';
+import { initialState } from './modell';
 import NAVLogo from './nav-logo';
 import Innholdslaster from './innholdslaster';
 import { hentVeilederinfo, hentEnheter, hentTekster, notifyModiaContextHolder } from './api/api';
