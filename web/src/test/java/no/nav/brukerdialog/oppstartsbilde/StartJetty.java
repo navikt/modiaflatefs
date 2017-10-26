@@ -19,7 +19,7 @@ public class StartJetty {
                         .at(CONTEXT_NAME)
                         .loadProperties("/test.properties")
                         .port(PORT)
-                , new DevelopmentSecurity.ISSOSecurityConfig(CONTEXT_NAME,"t6")).buildJetty();
+                , new DevelopmentSecurity.ISSOSecurityConfig(CONTEXT_NAME)).buildJetty();
         jetty.startAnd(first(waitFor(gotKeypress())).then(jetty.stop));
     }
 

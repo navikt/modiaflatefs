@@ -3,17 +3,29 @@ import PT from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import Lenker from './lenker';
 import { erstattMiljoPlaceholder } from './utils';
+import { aktivEnhetShape, enhetlisteShape } from './modell';
 
 
-function Oppstartsbilde({ enheter, valgtEnhet, velgEnhet, veilederinfo }) {
-    if (!enheter) {
-        return null;
-    }
-    const enhet = valgtEnhet || enheter[0].enhetId;
+function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
+    const enhetId = aktivEnhet.enhet.enhetId;
 
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
     const miaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/mia');
     const syfoUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
+
+    const handleOnChange = (event) => {
+        const nyAktivEnhetId = event.currentTarget.value;
+        if (nyAktivEnhetId !== enhetId) {
+            settAktivEnhet(nyAktivEnhetId);
+        }
+    };
+
+    const handleOnBlur = (event) => {
+        const nyAktivEnhetId = event.currentTarget.value;
+        if (nyAktivEnhetId !== enhetId) {
+            settAktivEnhet(nyAktivEnhetId);
+        }
+    };
 
     return (
         <div>
@@ -24,15 +36,26 @@ function Oppstartsbilde({ enheter, valgtEnhet, velgEnhet, veilederinfo }) {
                 />
             </div>
             <div className="enhetsvelger__wrapper">
-                <select className="enhetsvelger blokk-l" onBlur={(event) => (velgEnhet(event.currentTarget.value))}>
+                <select
+                    className="enhetsvelger blokk-l"
+                    onChange={(event) => (handleOnChange(event))}
+                    onBlur={(event) => (handleOnBlur(event))}
+                    defaultValue={enheter.find((e) => e.enhetId === enhetId)}
+                >
                     {enheter.map((e) =>
-                        <option key={e.enhetId} value={e.enhetId}>{`${e.enhetId} ${e.navn}`}</option>)}
+                        (<option
+                            key={e.enhetId}
+                            value={e.enhetId}
+                        >
+                            {`${e.enhetId} ${e.navn}`}
+                        </option>)
+                    )}
                 </select>
             </div>
             <Lenker
                 arbeidsmarked={miaUrl}
-                enhet={`/veilarbportefoljeflatefs/enhet?enhet=${enhet}`}
-                minoversikt={`/veilarbportefoljeflatefs/portefolje?enhet=${enhet}`}
+                enhet={`/veilarbportefoljeflatefs/enhet?enhet=${enhetId}`}
+                minoversikt={`/veilarbportefoljeflatefs/portefolje?enhet=${enhetId}`}
                 modia={modiaUrl}
                 sykefravaer={syfoUrl}
             />
@@ -41,14 +64,10 @@ function Oppstartsbilde({ enheter, valgtEnhet, velgEnhet, veilederinfo }) {
 }
 
 Oppstartsbilde.propTypes = {
-    enheter: PT.arrayOf(PT.object).isRequired,
-    valgtEnhet: PT.string,
-    velgEnhet: PT.func.isRequired,
+    enheter: enhetlisteShape.isRequired,
+    aktivEnhet: aktivEnhetShape.isRequired,
+    settAktivEnhet: PT.func.isRequired,
     veilederinfo: PT.shape({ navn: PT.string, ident: PT.string }).isRequired
-};
-
-Oppstartsbilde.defaultProps = {
-    valgtEnhet: undefined
 };
 
 export default Oppstartsbilde;
