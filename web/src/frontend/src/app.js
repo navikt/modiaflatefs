@@ -15,6 +15,8 @@ class Application extends Component {
     constructor(props) {
         super(props);
         this.state = initialState;
+
+        this.settAktivEnhet = this.settAktivEnhet.bind(this);
     }
 
     componentDidMount() {
@@ -34,8 +36,6 @@ class Application extends Component {
         hentTekster()
             .then((res) => this.setState({ tekster: { data: res, status: STATUS.OK } }))
             .catch(() => this.apiKallFeilet());
-
-        this.settAktivEnhet = this.settAktivEnhet.bind(this);
     }
 
     settInitiellAktivEnhet(enhet) {
