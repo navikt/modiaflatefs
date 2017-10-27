@@ -11,7 +11,7 @@ import static no.nav.sbl.dialogarena.common.jetty.JettyStarterUtils.*;
 public class StartJetty {
 
     public static final String CONTEXT_NAME = "modiaflatefs";
-    public static final int PORT = 8930;
+    public static final int PORT = 8931;
 
 
     public static void main(String[] args) throws Exception {
