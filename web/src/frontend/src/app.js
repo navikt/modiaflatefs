@@ -9,7 +9,7 @@ import Innholdslaster from './innholdslaster';
 import { hentAktivEnhet, oppdaterKontekstHolder } from './enhet-context/context-api';
 import EnhetContext from './enhet-context/enhet-context';
 import { initiellState } from './modell';
-import { hentVeilederinfo, hentEnheter, hentTekster } from './api/api';
+import { hentVeilederinfo, hentEnheter, hentTekster } from './statisk-data-api';
 import { erDev } from './utils';
 
 addLocaleData(nb);

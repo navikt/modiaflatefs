@@ -1,4 +1,4 @@
-import { fetchToJson } from '../api/api-utils';
+import { fetchToJson } from '../api-utils';
 
 const MED_CREDENTIALS = {
     credentials: 'same-origin',
