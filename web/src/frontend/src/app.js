@@ -3,7 +3,7 @@ import { IntlProvider, addLocaleData, FormattedMessage } from 'react-intl';
 import nb from 'react-intl/locale-data/nb';
 import Feilside500 from './feilsider/500';
 import Oppstartsbilde from './oppstartsbilde';
-import { STATUS, erDev } from './utils';
+import { STATUS } from './utils';
 import NAVLogo from './nav-logo';
 import Innholdslaster from './innholdslaster';
 import { hentAktivEnhet, oppdaterKontekstHolder } from './enhet-context/context-api';
@@ -49,14 +49,6 @@ class Application extends Component {
 
     settAktivEnhet(enhetId) {
         const valgtEnhet = this.state.enheter.enhetliste.find((enhet) => enhet.enhetId === enhetId);
-
-        if (erDev() && !valgtEnhet) {
-            /*eslint-disable*/
-            console.error(`Enhet hentet fra kontekstholder: ${enhetId}. Appen klarer ikke å finne denne enheten i sin 
-            state. Dette kan skyldes at appen kjører med mock`);
-            /*eslint-enable*/
-        }
-
         this.setState({
             aktivEnhet: {
                 status: STATUS.OK,
