@@ -10,6 +10,7 @@ import { hentAktivEnhet, oppdaterKontekstHolder } from './enhet-context/context-
 import EnhetContext from './enhet-context/enhet-context';
 import { initiellState } from './modell';
 import { hentVeilederinfo, hentEnheter, hentTekster } from './api/api';
+import { erDev } from './utils';
 
 addLocaleData(nb);
 
@@ -49,6 +50,13 @@ class Application extends Component {
 
     settAktivEnhet(enhetId) {
         const valgtEnhet = this.state.enheter.enhetliste.find((enhet) => enhet.enhetId === enhetId);
+
+        if(erDev() && !valgtEnhet) {
+            console.error("Enhet hentet fra kontekstholder: " + enhetId);
+            console.error("Appen klarer ikke å finne denne enheten i sin state. " +
+                "Dette kan skyldes at appen kjører med mock");
+        }
+
         this.setState({
             aktivEnhet: {
                 status: STATUS.OK,
