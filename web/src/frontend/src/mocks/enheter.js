@@ -1,5 +1,4 @@
 module.exports = {
-    ident: 'Z990281',
     enhetliste: [
         { enhetId: '0101', navn: 'NAV Tatooine' },
         { enhetId: '0211', navn: 'NAV Naboo' },
