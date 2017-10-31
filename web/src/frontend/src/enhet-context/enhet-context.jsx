@@ -57,7 +57,6 @@ class EnhetContext extends React.Component {
 
 EnhetContext.propTypes = {
     aktivEnhet: aktivEnhetShape.isRequired,
-    settAktivEnhet: PT.func.isRequired,
     hentAktivEnhet: PT.func.isRequired
 };
 

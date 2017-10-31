@@ -97,7 +97,6 @@ class Application extends Component {
                             <div>
                                 <EnhetContext
                                     aktivEnhet={aktivEnhet}
-                                    settAktivEnhet={this.settAktivEnhet}
                                     hentAktivEnhet={this.doHentAktivEnhet}
                                 />
                                 <Oppstartsbilde
