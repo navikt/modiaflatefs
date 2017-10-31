@@ -30,7 +30,7 @@ class EnhetContext extends React.Component {
     enhetContextHandler(event) {
         switch (event.type) {
             case EnhetContextEventNames.CONNECTION_STATE_CHANGED:
-                this.setState({...this.state, connected: event.state});
+                this.setState({ connected: event.state });
                 break;
             case EnhetContextEventNames.NY_AKTIV_ENHET:
                 this.props.hentAktivEnhet();
