@@ -52,9 +52,8 @@ class Application extends Component {
         const valgtEnhet = this.state.enheter.enhetliste.find((enhet) => enhet.enhetId === enhetId);
 
         if(erDev() && !valgtEnhet) {
-            console.error("Enhet hentet fra kontekstholder: " + enhetId);
-            console.error("Appen klarer ikke å finne denne enheten i sin state. " +
-                "Dette kan skyldes at appen kjører med mock");
+            console.error("Enhet hentet fra kontekstholder: " + enhetId +
+                ". Appen klarer ikke å finne denne enheten i sin state. Dette kan skyldes at appen kjører med mock");
         }
 
         this.setState({
