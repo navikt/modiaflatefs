@@ -22,3 +22,8 @@ export function erstattMiljoPlaceholder(lenke) {
     }
     return lenke.replace('{{miljoStreng}}', miljoStreng);
 }
+
+export function erDev() {
+    const host = window.location.host;
+    return host.includes('localhost') || host.includes('127.0.0.1');
+}
