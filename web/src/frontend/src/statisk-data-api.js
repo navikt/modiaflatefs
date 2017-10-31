@@ -9,12 +9,6 @@ const MED_CREDENTIALS = {
     }
 };
 
-const changeContextConfig = (enhet) => ({
-    ...MED_CREDENTIALS,
-    method: 'post',
-    body: JSON.stringify({ verdi: enhet, eventType: 'NY_AKTIV_ENHET' })
-});
-
 export function hentVeilederinfo() {
     return fetchToJson('/veilarbveileder/tjenester/veileder/me', MED_CREDENTIALS);
 }
@@ -26,8 +20,3 @@ export function hentEnheter() {
 export function hentTekster() {
     return fetchToJson('/modiaflatefs/api/tekster');
 }
-
-export function notifyModiaContextHolder({ enhet }) {
-    return fetchToJson('/modiacontextholder/api/context', changeContextConfig(enhet));
-}
-

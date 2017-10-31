@@ -4,27 +4,19 @@ import { FormattedMessage } from 'react-intl';
 import Lenker from './lenker';
 import { erstattMiljoPlaceholder } from './utils';
 import { aktivEnhetShape, enhetlisteShape } from './modell';
+import { oppdaterKontekstHolder } from './enhet-context/context-api';
 
 
 function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     const enhetId = aktivEnhet.enhet.enhetId;
-
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
     const miaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/mia');
     const syfoUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
 
     const handleOnChange = (event) => {
         const nyAktivEnhetId = event.currentTarget.value;
-        if (nyAktivEnhetId !== enhetId) {
-            settAktivEnhet(nyAktivEnhetId);
-        }
-    };
-
-    const handleOnBlur = (event) => {
-        const nyAktivEnhetId = event.currentTarget.value;
-        if (nyAktivEnhetId !== enhetId) {
-            settAktivEnhet(nyAktivEnhetId);
-        }
+        settAktivEnhet(nyAktivEnhetId);
+        oppdaterKontekstHolder(nyAktivEnhetId);
     };
 
     return (
@@ -36,11 +28,10 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
                 />
             </div>
             <div className="enhetsvelger__wrapper">
-                <select
+                <select // eslint-disable-line jsx-a11y/no-onchange
                     className="enhetsvelger blokk-l"
                     onChange={(event) => (handleOnChange(event))}
-                    onBlur={(event) => (handleOnBlur(event))}
-                    defaultValue={enheter.find((e) => e.enhetId === enhetId)}
+                    value={enheter.map((e) => e.enhetId).find((id) => id === enhetId)}
                 >
                     {enheter.map((e) =>
                         (<option

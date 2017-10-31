@@ -1,7 +1,7 @@
 import PT from 'prop-types';
 import { STATUS } from './utils';
 
-export const initialState = {
+export const initiellState = {
     enheter: {
         status: STATUS.PENDING,
         enhetliste: []
