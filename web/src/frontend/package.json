@@ -6,8 +6,6 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "classnames": "2.2.5",
-    "nav-frontend-alertstriper": "0.2.9",
-    "nav-frontend-alertstriper-style": "0.2.18",
     "nav-frontend-core": "4.0.5",
     "nav-frontend-ikoner-assets": "0.2.3",
     "nav-frontend-lenker-style": "0.2.1",
