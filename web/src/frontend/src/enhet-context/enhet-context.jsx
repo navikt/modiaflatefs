@@ -1,7 +1,5 @@
 import * as React from 'react';
 import PT from 'prop-types';
-import { AlertStripeAdvarselSolid } from 'nav-frontend-alertstriper';
-import { FormattedMessage } from 'react-intl';
 import EnhetContextListener, {EnhetConnectionState, EnhetContextEventNames} from './enhet-context-listener';
 import { erDev } from '../utils';
 import {aktivEnhetShape} from "../modell";
@@ -41,17 +39,7 @@ class EnhetContext extends React.Component {
     }
 
     render() {
-        const alertIkkeTilkoblet = (
-            <AlertStripeAdvarselSolid>
-                <FormattedMessage id="nyenhet.tilkobling.feilet" />
-            </AlertStripeAdvarselSolid>
-        );
-
-        return (
-            <div>
-                { this.state.connected === EnhetConnectionState.FAILED ? alertIkkeTilkoblet : null }
-            </div>
-        );
+        return null;
     }
 }
 
