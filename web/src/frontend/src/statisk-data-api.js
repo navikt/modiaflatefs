@@ -10,11 +10,11 @@ const MED_CREDENTIALS = {
 };
 
 export function hentVeilederinfo() {
-    return fetchToJson('/veilarbveileder/tjenester/veileder/me', MED_CREDENTIALS);
+    return fetchToJson('/veilarbveileder/api/veileder/me', MED_CREDENTIALS);
 }
 
 export function hentEnheter() {
-    return fetchToJson('/veilarbveileder/tjenester/veileder/enheter', MED_CREDENTIALS);
+    return fetchToJson('/veilarbveileder/api/veileder/enheter', MED_CREDENTIALS);
 }
 
 export function hentTekster() {
