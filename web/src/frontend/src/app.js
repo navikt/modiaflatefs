@@ -58,7 +58,7 @@ class Application extends Component {
     }
 
     oppdaterAktivEnhet(enhetId) {
-        if (enhetId === '') {
+        if (!enhetId || enhetId === '') {
             const initiellEnhet = this.state.enheter.enhetliste[0];
             this.settInitiellAktivEnhet(initiellEnhet);
             oppdaterKontekstHolder(initiellEnhet.enhetId);
