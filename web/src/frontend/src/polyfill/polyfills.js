@@ -1,4 +1,6 @@
 /* eslint-disable */
+import 'core-js/fn/string/includes';
+
 if (!Array.prototype.find) {
     Object.defineProperty(Array.prototype, 'find', {
         value: function(predicate) {
