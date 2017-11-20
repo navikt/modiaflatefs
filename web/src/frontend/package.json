@@ -6,6 +6,7 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "classnames": "2.2.5",
+    "core-js": "2.5.1",
     "nav-frontend-core": "4.0.5",
     "nav-frontend-ikoner-assets": "0.2.3",
     "nav-frontend-lenker-style": "0.2.1",
