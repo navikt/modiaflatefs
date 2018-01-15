@@ -27,7 +27,7 @@ class Application extends Component {
         hentEnheter()
             .then((res) => {
                 this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } });
-                this.doHentAktivEnhet();
+                this.doHentAktivEnhet(res.enhetliste.map((enhet) => enhet.enhetId));
             })
             .catch((err) => this.apiKallFeilet(err));
         hentVeilederinfo()
@@ -57,22 +57,25 @@ class Application extends Component {
         });
     }
 
-    oppdaterAktivEnhet(enhetId) {
-        if (!enhetId || enhetId === '') {
-            const initiellEnhet = this.state.enheter.enhetliste[0];
-            this.settInitiellAktivEnhet(initiellEnhet);
-            oppdaterKontekstHolder(initiellEnhet.enhetId);
-            return;
-        }
-        const { aktivEnhet } = this.state;
-        if (!aktivEnhet.enhet || enhetId !== aktivEnhet.enhet.enhetId) {
-            this.settAktivEnhet(enhetId);
-        }
+    oppdaterAktivEnhet(enhetliste) {
+        return (enhetId) => {
+            const harTilgangPaEnhet = enhetliste.includes(enhetId);
+            if (!enhetId || enhetId === '' || !harTilgangPaEnhet) {
+                const initiellEnhet = this.state.enheter.enhetliste[0];
+                this.settInitiellAktivEnhet(initiellEnhet);
+                oppdaterKontekstHolder(initiellEnhet.enhetId);
+                return;
+            }
+            const { aktivEnhet } = this.state;
+            if (!aktivEnhet.enhet || enhetId !== aktivEnhet.enhet.enhetId) {
+                this.settAktivEnhet(enhetId);
+            }
+        };
     }
 
-    doHentAktivEnhet() {
+    doHentAktivEnhet(enhetliste) {
         return hentAktivEnhet()
-            .then(this.oppdaterAktivEnhet)
+            .then(this.oppdaterAktivEnhet(enhetliste))
             .catch((err) => this.apiKallFeilet(err));
     }
 
