@@ -26,8 +26,7 @@ class Application extends Component {
     componentDidMount() {
         hentEnheter()
             .then((res) => {
-                this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } });
-                this.doHentAktivEnhet(res.enhetliste.map((enhet) => enhet.enhetId));
+                this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } }, this.doHentAktivEnhet);
             })
             .catch((err) => this.apiKallFeilet(err));
         hentVeilederinfo()
@@ -57,25 +56,23 @@ class Application extends Component {
         });
     }
 
-    oppdaterAktivEnhet(enhetliste) {
-        return (enhetId) => {
-            const harTilgangPaEnhet = enhetliste.includes(enhetId);
-            if (!enhetId || enhetId === '' || !harTilgangPaEnhet) {
-                const initiellEnhet = this.state.enheter.enhetliste[0];
-                this.settInitiellAktivEnhet(initiellEnhet);
-                oppdaterKontekstHolder(initiellEnhet.enhetId);
-                return;
-            }
-            const { aktivEnhet } = this.state;
-            if (!aktivEnhet.enhet || enhetId !== aktivEnhet.enhet.enhetId) {
-                this.settAktivEnhet(enhetId);
-            }
-        };
+    oppdaterAktivEnhet(enhetId) {
+        const harTilgangPaEnhet = this.state.enheter.enhetliste.map((enhet) => enhet.enhetId).includes(enhetId);
+        if (!enhetId || enhetId === '' || !harTilgangPaEnhet) {
+            const initiellEnhet = this.state.enheter.enhetliste[0];
+            this.settInitiellAktivEnhet(initiellEnhet);
+            oppdaterKontekstHolder(initiellEnhet.enhetId);
+            return;
+        }
+        const { aktivEnhet } = this.state;
+        if (!aktivEnhet.enhet || enhetId !== aktivEnhet.enhet.enhetId) {
+            this.settAktivEnhet(enhetId);
+        }
     }
 
-    doHentAktivEnhet(enhetliste) {
+    doHentAktivEnhet() {
         return hentAktivEnhet()
-            .then(this.oppdaterAktivEnhet(enhetliste))
+            .then(this.oppdaterAktivEnhet)
             .catch((err) => this.apiKallFeilet(err));
     }
 
