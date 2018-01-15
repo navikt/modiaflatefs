@@ -26,8 +26,7 @@ class Application extends Component {
     componentDidMount() {
         hentEnheter()
             .then((res) => {
-                this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } });
-                this.doHentAktivEnhet();
+                this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } }, this.doHentAktivEnhet);
             })
             .catch((err) => this.apiKallFeilet(err));
         hentVeilederinfo()
@@ -58,7 +57,8 @@ class Application extends Component {
     }
 
     oppdaterAktivEnhet(enhetId) {
-        if (!enhetId || enhetId === '') {
+        const harTilgangPaEnhet = this.state.enheter.enhetliste.map((enhet) => enhet.enhetId).includes(enhetId);
+        if (!enhetId || enhetId === '' || !harTilgangPaEnhet) {
             const initiellEnhet = this.state.enheter.enhetliste[0];
             this.settInitiellAktivEnhet(initiellEnhet);
             oppdaterKontekstHolder(initiellEnhet.enhetId);
