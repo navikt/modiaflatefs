@@ -57,7 +57,7 @@ class Application extends Component {
     }
 
     oppdaterAktivEnhet(enhetId) {
-        const harTilgangPaEnhet = this.state.enheter.enhetliste.map((enhet) => enhet.enhetId).includes(enhetId);
+        const harTilgangPaEnhet = this.state.enheter.enhetliste.map((enhet) => enhet.enhetId).indexOf(enhetId) >= 0;
         if (!enhetId || enhetId === '' || !harTilgangPaEnhet) {
             const initiellEnhet = this.state.enheter.enhetliste[0];
             this.settInitiellAktivEnhet(initiellEnhet);
