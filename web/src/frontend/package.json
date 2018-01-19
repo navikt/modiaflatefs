@@ -32,6 +32,7 @@
     "test-react-scripts": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "eslint": "eslint --fix ./src/",
+    "lint": "npm run eslint",
     "test": "mocha"
   },
   "devDependencies": {
