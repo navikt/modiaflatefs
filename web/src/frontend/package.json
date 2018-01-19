@@ -33,7 +33,8 @@
     "eject": "react-scripts eject",
     "eslint": "eslint --fix ./src/",
     "lint": "npm run eslint",
-    "test": "mocha"
+    "test": "mocha",
+    "test:coverage": "npm test -- --coverage"
   },
   "devDependencies": {
     "autoless": "0.1.7",
