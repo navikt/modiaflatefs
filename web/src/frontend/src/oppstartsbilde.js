@@ -27,9 +27,9 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
                     values={{ navn: veilederinfo.veileder.navn, ident: veilederinfo.veileder.ident }}
                 />
             </div>
-            <div className="enhetsvelger__wrapper">
+            <div className="enhetsvelger__wrapper blokk-l">
                 <select // eslint-disable-line jsx-a11y/no-onchange
-                    className="enhetsvelger blokk-l"
+                    className="enhetsvelger"
                     onChange={(event) => (handleOnChange(event))}
                     value={enheter.map((e) => e.enhetId).find((id) => id === enhetId)}
                 >

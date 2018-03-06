@@ -37,8 +37,6 @@ body {
     .enhetsvelger__wrapper {
         position:relative;
         display: inline-block;
-
-
         &:after {
             pointer-events: none;
             content: "";
@@ -47,7 +45,7 @@ body {
             border-top: 1.5px solid #fff;
             border-right: none;
             top: 10px;
-            right: 15px;
+            right: 11px;
             width: 10px;
             height: 10px;
             transform: rotate(-135deg);
@@ -55,20 +53,18 @@ body {
     }
 
     .enhetsvelger {
-        color: @white;
-        background-color: #1d1d1d;
-        border-radius: 1px;
-        margin-right: 3px;
-        margin-left: 2em;
-        padding: 8px 0 7px 10px;
-        width: 210px;
         height: 34px;
+        min-width: 210px;
+        margin-left: 2em;
+        padding: 8px 1.7em 7px 10px;
         border: 1px solid #7f756c;
+        border-radius: 1px;
+        background-color: #1d1d1d;
+        color: @white;
         -webkit-appearance: none;
         -moz-appearance: none;
         -ms-appearance: none;
         appearance: none;
-
         &::-ms-expand {
             display: none; // Skjuler pil i IE10
         }
