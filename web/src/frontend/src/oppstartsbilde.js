@@ -11,7 +11,7 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     const enhetId = aktivEnhet.enhet.enhetId;
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
     const miaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/mia');
-    const syfoUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
+    const syfoUrl = erstattMiljoPlaceholder('https://app{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
 
     const handleOnChange = (event) => {
         const nyAktivEnhetId = event.currentTarget.value;
