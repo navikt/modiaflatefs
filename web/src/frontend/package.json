@@ -11,7 +11,8 @@
     "build": "npm run delete-static && react-scripts build && npm run copyfiles",
     "test": "react-scripts test --env=jsdom -a",
     "eject": "react-scripts eject",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "echo not implemented",
+    "lint": "echo not implemented, part of the build script"
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
