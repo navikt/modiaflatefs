@@ -16,8 +16,8 @@ class EnhetContext extends React.Component {
     }
 
     componentDidMount() {
-        const host = erDev() ? 'app-t4.adeo.no' : window.location.hostname;
-        const uri = `wss://${host}/modiaeventdistribution/websocket`;
+        const host = erDev() ? 'app-t6.adeo.no' : window.location.hostname;
+        const uri = `wss://${host}/modiaeventdistribution/ws/${this.props.veilederIdent}`;
         this.contextListener = new EnhetContextListener(uri, this.enhetContextHandler);
     }
 
@@ -45,7 +45,8 @@ class EnhetContext extends React.Component {
 
 EnhetContext.propTypes = {
     aktivEnhet: aktivEnhetShape.isRequired,
-    hentAktivEnhet: PT.func.isRequired
+    hentAktivEnhet: PT.func.isRequired,
+    veilederIdent: PT.string.isRequired
 };
 
 export default EnhetContext;

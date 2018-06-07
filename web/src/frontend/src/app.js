@@ -82,33 +82,45 @@ class Application extends Component {
     }
 
     render() {
-        const { aktivEnhet, apiKallFeilet, tekster, enheter, veilederinfo } = this.state;
+        const avhengigheter = [
+            this.state.enheter,
+            this.state.tekster,
+            this.state.veilederinfo,
+            this.state.aktivEnhet
+        ];
+
+        if (this.state.apiKallFeilet) {
+            return <Feilside500 />;
+        }
+
         return (
-            apiKallFeilet ?
-                <Feilside500 />
-                :
-                <IntlProvider defaultLocale="nb" locale="nb" messages={tekster.data.nb}>
-                    <div className="modiaflatefs blokk-xl">
-                        <NAVLogo />
-                        <div className="tittel blokk-xl">
-                            <FormattedMessage id="modiaoppstartsbilde.tittel" />
-                        </div>
-                        <Innholdslaster avhengigheter={[enheter, tekster, veilederinfo, aktivEnhet]}>
-                            <div>
-                                <EnhetContext
-                                    aktivEnhet={aktivEnhet}
-                                    hentAktivEnhet={this.doHentAktivEnhet}
-                                />
-                                <Oppstartsbilde
-                                    enheter={enheter.enhetliste}
-                                    aktivEnhet={aktivEnhet}
-                                    settAktivEnhet={this.settAktivEnhet}
-                                    veilederinfo={veilederinfo}
-                                />
-                            </div>
-                        </Innholdslaster>
+            <IntlProvider defaultLocale="nb" locale="nb" messages={this.state.tekster.data.nb}>
+                <div className="modiaflatefs blokk-xl">
+                    <NAVLogo />
+                    <div className="tittel blokk-xl">
+                        <FormattedMessage id="modiaoppstartsbilde.tittel" />
                     </div>
-                </IntlProvider>
+                    <Innholdslaster avhengigheter={avhengigheter}>
+                        {
+                            ([enheter, _, veilederinfo, aktivEnhet]) => (
+                                <div>
+                                    <EnhetContext
+                                        veilederIdent={veilederinfo.veileder.ident}
+                                        aktivEnhet={aktivEnhet}
+                                        hentAktivEnhet={this.doHentAktivEnhet}
+                                    />
+                                    <Oppstartsbilde
+                                        enheter={enheter.enhetliste}
+                                        aktivEnhet={aktivEnhet}
+                                        settAktivEnhet={this.settAktivEnhet}
+                                        veilederinfo={veilederinfo}
+                                    />
+                                </div>
+                            )
+                        }
+                    </Innholdslaster>
+                </div>
+            </IntlProvider>
         );
     }
 }

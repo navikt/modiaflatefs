@@ -17,6 +17,11 @@ function Innholdslaster({ children, avhengigheter }) {
             </div>
         );
     }
+
+    if (typeof children === 'function') {
+        return children(avhengigheter);
+    }
+
     return (
         children
     );
