@@ -7,5 +7,9 @@
       "config/**/*.js",
       "node_modules/**/*.ts"
     ]
+  },
+  "rules": {
+    "interface-name": false,
+    "object-literal-sort-keys": false
   }
 }
