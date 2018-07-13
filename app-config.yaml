@@ -22,7 +22,7 @@ fasitResources:
   used:
   - alias: loadbalancer:modiaflatefs
     resourceType: loadbalancerconfig
-  - alias: srvveilmodiaflatefs
+  - alias: srvmodiaflatefs
     resourceType: credential
 
   # security resources
