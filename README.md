@@ -1,5 +1,5 @@
 # Modiaflatefs
-Oppstarts bilde for modia applikasjonene 
+Oppstartsbilde for modia applikasjonene 
 
 Appen er satt opp med create-react-app + less og eslint.
 
