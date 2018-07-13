@@ -1,27 +1,30 @@
-.idea
-*.iml
-*.ipr
-*.iws
+# See https://help.github.com/ignore-files/ for more about ignoring files.
 
-**/node_modules/
+# dependencies
+/node_modules
 
-*.log
+# testing
+/coverage
 
-target
-web/src/**/*.css
-**/webapp/css/**/*
-**/webapp/img/**/*
-**/webapp/build/**/*
-**/webapp/js/**/*
-**/webapp/*.html
-**/npm-debug.log
+# production
+/build
 
-npm-debug.log
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-.classpath
-.project
-.settings
-/web/src/frontend/build
-/web/src/main/webapp/static/
-/web/src/main/webapp/asset-manifest.json
-/web/src/main/webapp/service-worker.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# css
+*.css
+*.map
+
+.idea/
+
+# buildt files
+src/tekster.js

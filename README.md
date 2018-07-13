@@ -1,6 +1,24 @@
+# Modiaflatefs
+Oppstarts bilde for modia applikasjonene 
+
 Appen er satt opp med create-react-app + less og eslint.
 
-For utvikling kjør npm install og npm run start fra web/src/frontend. En dev-server starter da automatisk på port 3000. 
-Appen er satt opp med fetchmock og proxy til dev-proxy(localhost:8080) for kall som ikke er definert i mocks/index.js.
+## Kjøre appen
+```console
+$ npm install
+$ npm start
+```
 
-For bygging er det satt opp en jobb her: http://bekkci.devillo.no/job/modiaflatefs-build-pipeline/
+# Henvendelser
+
+Spørsmål knyttet til koden eller prosjektet kan rettes mot:
+
+* Alexander Svendsen, alexander.svendsen@nav.no
+* Nicklas Utgaar, nicklas.utgaard@nav.no
+* Håkon Holm, hakon.planke.holm@nav.no
+* Oscar Eckbo, oscar.eckbo@nav.no
+* Sneha Desai, sneha.desai@nav.no
+
+## For NAV-ansatte
+
+Interne henvendelser kan sendes via Slack i kanalen #team-oppfølging.
