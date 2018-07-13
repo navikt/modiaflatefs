@@ -1,0 +1,45 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/modiaflatefs",
+  "proxy": "http://localhost:8080",
+  "scripts": {
+    "start": "npm run build-tekster & react-scripts start",
+    "build": "npm run build-tekster & react-scripts build",
+    "build-tekster": "node ./build-tekster.js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "test:coverage": "echo not implemented",
+    "lint": "echo not implemented, part of the build script"
+  },
+  "dependencies": {
+    "babel-polyfill": "6.26.0",
+    "classnames": "2.2.5",
+    "nav-frontend-core": "4.0.5",
+    "nav-frontend-ikoner-assets": "0.2.21",
+    "nav-frontend-lenker-style": "0.2.5",
+    "nav-frontend-spinner": "1.0.8",
+    "nav-frontend-spinner-style": "0.2.4",
+    "nav-frontend-typografi": "2.0.3",
+    "nav-frontend-typografi-style": "1.0.8",
+    "prop-types": "15.6.1",
+    "query-string": "5.0.1",
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-intl": "2.4.0"
+  },
+  "devDependencies": {
+    "@nutgaard/react-scripts": "0.0.8-beta.4",
+    "@types/classnames": "^2.2.3",
+    "@types/jest": "^22.2.3",
+    "@types/node": "^10.0.6",
+    "@types/react": "^16.3.14",
+    "@types/react-dom": "^16.0.5",
+    "fetch-mock": "5.12.1",
+    "npm-run-all": "4.1.2",
+    "path-to-regexp": "2.1.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
+  }
+}
