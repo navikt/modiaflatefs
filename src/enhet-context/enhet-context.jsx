@@ -16,7 +16,7 @@ class EnhetContext extends React.Component {
     }
 
     componentDidMount() {
-        const host = erDev() ? 'app-t6.adeo.no' : window.location.hostname;
+        const host = (erDev() ? 'app-t6.adeo.no' : window.location.hostname).replace('app', 'veilederflatehendelser');
         const uri = `wss://${host}/modiaeventdistribution/ws/${this.props.veilederIdent}`;
         this.contextListener = new EnhetContextListener(uri, this.enhetContextHandler);
     }
