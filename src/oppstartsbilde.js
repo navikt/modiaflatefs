@@ -10,7 +10,6 @@ import { oppdaterKontekstHolder } from './enhet-context/context-api';
 function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     const enhetId = aktivEnhet.enhet.enhetId;
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
-    const miaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/mia');
     const syfoUrl = erstattMiljoPlaceholder('https://app{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
 
     const handleOnChange = (event) => {
@@ -44,7 +43,7 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
                 </select>
             </div>
             <Lenker
-                arbeidsmarked={miaUrl}
+                arbeidsmarked={`https://mia.nav.no/`}
                 enhet={`/veilarbportefoljeflatefs/enhet?enhet=${enhetId}`}
                 minoversikt={`/veilarbportefoljeflatefs/portefolje?enhet=${enhetId}`}
                 modia={modiaUrl}
