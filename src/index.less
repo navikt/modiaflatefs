@@ -70,9 +70,21 @@ body {
 
     .lenke {
         color: @white;
-        margin-left: 2rem
     }
 
     .lenker {
+        display: flex;
+        justify-content: center;
+        text-align: left;
+
+        &__kolonne {
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+        }
+        &__celle {
+            &:not(:first-child) {
+                margin-top: 1.125rem;
+            }
+        }
     }
 }

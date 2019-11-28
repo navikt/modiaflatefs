@@ -23,6 +23,14 @@ export function erstattMiljoPlaceholder(lenke) {
     return lenke.replace('{{miljoStreng}}', miljoStreng);
 }
 
+export function erstattMiljoPlaceholderNais(lenke) {
+    const miljoStreng = finnMiljoStreng();
+    if (miljoStreng) {
+        return lenke.replace('{{miljoStreng}}', 'nais.preprod.local');
+    }
+    return lenke.replace('{{miljoStreng}}', 'nais.adeo.no');
+}
+
 export function erDev() {
     const host = window.location.host;
     return host.includes('localhost') || host.includes('127.0.0.1');

@@ -2,7 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import Lenker from './lenker';
-import { erstattMiljoPlaceholder } from './utils';
+import { erstattMiljoPlaceholder, erstattMiljoPlaceholderNais } from './utils';
 import { aktivEnhetShape, enhetlisteShape } from './modell';
 import { oppdaterKontekstHolder } from './enhet-context/context-api';
 
@@ -11,6 +11,7 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     const enhetId = aktivEnhet.enhet.enhetId;
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
     const syfoUrl = erstattMiljoPlaceholder('https://app{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
+    const rekrutteringsbistandUrl = erstattMiljoPlaceholderNais('https://rekrutteringsbistand.{{miljoStreng}}/');
 
     const handleOnChange = (event) => {
         const nyAktivEnhetId = event.currentTarget.value;
@@ -43,11 +44,11 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
                 </select>
             </div>
             <Lenker
-                arbeidsmarked={`https://mia.nav.no/`}
                 enhet={`/veilarbportefoljeflatefs/enhet?enhet=${enhetId}`}
                 minoversikt={`/veilarbportefoljeflatefs/portefolje?enhet=${enhetId}`}
                 modia={modiaUrl}
                 sykefravaer={syfoUrl}
+                rekrutteringsbistand={rekrutteringsbistandUrl}
             />
         </div>
     );
