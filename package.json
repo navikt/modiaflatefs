@@ -8,7 +8,7 @@
     "start": "npm run build-tekster & cross-env REACT_APP_MOCK=true craco start",
     "build": "npm run build-tekster & cross-env REACT_APP_MOCK=false craco build",
     "build-tekster": "node ./build-tekster.js",
-    "test": "craco test --env=jsdom",
+    "test": "echo not implemented",
     "test:coverage": "echo not implemented",
     "lint": "echo not implemented, part of the build script"
   },
