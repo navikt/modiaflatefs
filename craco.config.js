@@ -20,8 +20,6 @@ const removeCssHashPlugin = {
 
         });
 
-        throw new Error("");
-
         return webpackConfig;
     }
 };
