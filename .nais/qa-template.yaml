@@ -35,8 +35,6 @@ spec:
   vault:
     enabled: true
     paths:
-      - kvPath: /kv/preprod/fss/modiapersonoversikt-api/{{ namespace }}
-        mountPath: /var/run/secrets/nais.io/vault
       - kvPath: /serviceuser/data/dev/srvmodiaflatefs
         mountPath: /var/run/secrets/nais.io/service_user
   env:
