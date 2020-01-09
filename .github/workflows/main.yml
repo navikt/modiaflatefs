@@ -9,7 +9,7 @@ env:
 
 jobs:
   build:
-    name: Build and test
+    name: Test and build
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/dev' && github.ref != 'refs/heads/master'
     steps:
@@ -28,6 +28,7 @@ jobs:
         run: |
           npm run lint
           npm run test
+          npm run build
 
   build-and-push:
     name: Build and push Docker container
