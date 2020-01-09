@@ -2,7 +2,7 @@ apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: modiaflatefs
-  namespace: q0
+  namespace: {{ namespace }}
   cluster: dev-fss
   labels:
     team: personoversikt
@@ -27,13 +27,18 @@ spec:
       cpu: 3000m
       memory: 1024Mi
   ingresses:
-    - https://app-q0.adeo.no/modiaflatefs
+    - https://app-{{ namespace }}.adeo.no/modiaflatefs
   replicas:
     min: 2
     max: 4
     cpuThresholdPercentage: 60
   vault:
     enabled: true
+    paths:
+      - kvPath: /kv/preprod/fss/modiapersonoversikt-api/{{ namespace }}
+        mountPath: /var/run/secrets/nais.io/vault
+      - kvPath: /serviceuser/data/dev/srvmodiaflatefs
+        mountPath: /var/run/secrets/nais.io/service_user
   env:
     - name: ISSO_HOST_URL
       value: "https://isso-q.adeo.no/isso/oauth2"
@@ -46,4 +51,4 @@ spec:
     - name: OPENIDCONNECT_URL
       value: "https://isso-q.adeo.no:443/isso"
     - name: OIDC_REDIRECT_URL
-      value: "https://app-q0.adeo.no/veilarblogin/api/login"
+      value: "https://app-{{ namespace }}.adeo.no/veilarblogin/api/login"
