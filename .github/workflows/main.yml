@@ -9,7 +9,7 @@ env:
 
 jobs:
   build:
-    name: Build and test
+    name: Test and build
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/dev' && github.ref != 'refs/heads/master'
     steps:
@@ -28,6 +28,10 @@ jobs:
         run: |
           npm run lint
           npm run test
+      - name: Build
+        run: |
+          npm run build
+
 
   build-and-push:
     name: Build and push Docker container
@@ -71,7 +75,8 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           PRINT_PAYLOAD: true
           CLUSTER: dev-fss
-          RESOURCE: .nais/q0.yaml
+          RESOURCE: .nais/qa-template.yaml
+          VARS: .nais/q0.json
 
   deploy-prod:
     name: Deploy to prod
