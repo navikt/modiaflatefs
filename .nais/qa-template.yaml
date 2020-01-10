@@ -35,6 +35,8 @@ spec:
   vault:
     enabled: true
     paths:
+      - kvPath: /credential/data/dev/isso-rp-user
+        mountPath: /var/run/secrets/nais.io/isso-rp-user
       - kvPath: /serviceuser/data/dev/srvmodiaflatefs
         mountPath: /var/run/secrets/nais.io/service_user
   env:
@@ -46,7 +48,5 @@ spec:
       value: "https://isso-q.adeo.no:443/isso/oauth2"
     - name: ISSO_JWKS_URL
       value: "https://isso-q.adeo.no/isso/oauth2/connect/jwk_uri"
-    - name: OPENIDCONNECT_URL
-      value: "https://isso-q.adeo.no:443/isso"
     - name: OIDC_REDIRECT_URL
       value: "https://app-{{ namespace }}.adeo.no/veilarblogin/api/login"
