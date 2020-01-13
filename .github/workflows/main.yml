@@ -63,7 +63,7 @@ jobs:
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
           docker push ${IMAGE}
 
-  deploy-qa:
+  deploy-q0:
     name: Deploy to preprod
     needs: build-and-push
     if: github.ref == 'refs/heads/dev'
@@ -77,6 +77,36 @@ jobs:
           CLUSTER: dev-fss
           RESOURCE: .nais/qa-template.yaml
           VARS: .nais/q0.json
+
+  deploy-q1:
+    name: Deploy to preprod
+    needs: build-and-push
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          PRINT_PAYLOAD: true
+          CLUSTER: dev-fss
+          RESOURCE: .nais/qa-template.yaml
+          VARS: .nais/q1.json
+
+  deploy-q6:
+    name: Deploy to preprod
+    needs: build-and-push
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          PRINT_PAYLOAD: true
+          CLUSTER: dev-fss
+          RESOURCE: .nais/qa-template.yaml
+          VARS: .nais/q6.json
 
   deploy-prod:
     name: Deploy to prod

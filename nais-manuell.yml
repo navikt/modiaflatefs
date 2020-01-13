@@ -30,7 +30,7 @@ spec:
       cpu: 3000m
       memory: 1024Mi
   ingresses:
-    - https://app-q1.adeo.no/modiaflatefs
+    - https://app-q0.adeo.no/modiaflatefs
   replicas:
     min: 2
     max: 4
@@ -52,4 +52,4 @@ spec:
     - name: ISSO_JWKS_URL
       value: "https://isso-q.adeo.no/isso/oauth2/connect/jwk_uri"
     - name: OIDC_REDIRECT_URL
-      value: "https://app-q1.adeo.no/veilarblogin/api/login"
+      value: "https://app-q0.adeo.no/veilarblogin/api/login"

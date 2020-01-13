@@ -3,7 +3,7 @@ kind: "Application"
 metadata:
   name: modiaflatefs
   namespace: default
-  cluster: dev-fss
+  cluster: prod-fss
   labels:
     team: personoversikt
 spec:
@@ -35,9 +35,9 @@ spec:
   vault:
     enabled: true
     paths:
-      - kvPath: /kv/preprod/fss/modiapersonoversikt-api/default
-        mountPath: /var/run/secrets/nais.io/vault
-      - kvPath: /serviceuser/data/dev/srvmodiaflatefs
+      - kvPath: /credential/data/prod/isso-rp-user
+        mountPath: /var/run/secrets/nais.io/isso-rp-user
+      - kvPath: /serviceuser/data/prod/srvmodiaflatefs
         mountPath: /var/run/secrets/nais.io/service_user
   env:
     - name: ISSO_HOST_URL
@@ -48,7 +48,5 @@ spec:
       value: "https://isso.adeo.no:443/isso/oauth2"
     - name: ISSO_JWKS_URL
       value: "https://isso.adeo.no/isso/oauth2/connect/jwk_uri"
-    - name: OPENIDCONNECT_URL
-      value: "https://isso.adeo.no:443/isso"
     - name: OIDC_REDIRECT_URL
       value: "https://app.adeo.no/veilarblogin/api/login"
