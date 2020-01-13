@@ -78,19 +78,19 @@ jobs:
           RESOURCE: .nais/qa-template.yaml
           VARS: .nais/q0.json
       - uses: nais/deploy/actions/deploy@v1
-          env:
-            APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-            PRINT_PAYLOAD: true
-            CLUSTER: dev-fss
-            RESOURCE: .nais/qa-template.yaml
-            VARS: .nais/q1.json
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          PRINT_PAYLOAD: true
+          CLUSTER: dev-fss
+          RESOURCE: .nais/qa-template.yaml
+          VARS: .nais/q1.json
       - uses: nais/deploy/actions/deploy@v1
-          env:
-            APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-            PRINT_PAYLOAD: true
-            CLUSTER: dev-fss
-            RESOURCE: .nais/qa-template.yaml
-            VARS: .nais/q6.json
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          PRINT_PAYLOAD: true
+          CLUSTER: dev-fss
+          RESOURCE: .nais/qa-template.yaml
+          VARS: .nais/q6.json
 
   deploy-prod:
     name: Deploy to prod
