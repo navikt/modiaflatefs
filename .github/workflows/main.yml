@@ -64,7 +64,7 @@ jobs:
           docker push ${IMAGE}
 
   deploy-q0:
-    name: Deploy to preprod
+    name: Deploy to Q0
     needs: build-and-push
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
@@ -79,7 +79,7 @@ jobs:
           VARS: .nais/q0.json
 
   deploy-q1:
-    name: Deploy to preprod
+    name: Deploy to Q1
     needs: build-and-push
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
@@ -94,7 +94,7 @@ jobs:
           VARS: .nais/q1.json
 
   deploy-q6:
-    name: Deploy to preprod
+    name: Deploy to Q6
     needs: build-and-push
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
