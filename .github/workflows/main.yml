@@ -64,7 +64,7 @@ jobs:
           docker push ${IMAGE}
 
   deploy-q0:
-    name: Deploy to Q0
+    name: Deploy to QA
     needs: build-and-push
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
@@ -77,36 +77,20 @@ jobs:
           CLUSTER: dev-fss
           RESOURCE: .nais/qa-template.yaml
           VARS: .nais/q0.json
-
-  deploy-q1:
-    name: Deploy to Q1
-    needs: build-and-push
-    if: github.ref == 'refs/heads/dev'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
       - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          PRINT_PAYLOAD: true
-          CLUSTER: dev-fss
-          RESOURCE: .nais/qa-template.yaml
-          VARS: .nais/q1.json
-
-  deploy-q6:
-    name: Deploy to Q6
-    needs: build-and-push
-    if: github.ref == 'refs/heads/dev'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
+          env:
+            APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+            PRINT_PAYLOAD: true
+            CLUSTER: dev-fss
+            RESOURCE: .nais/qa-template.yaml
+            VARS: .nais/q1.json
       - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          PRINT_PAYLOAD: true
-          CLUSTER: dev-fss
-          RESOURCE: .nais/qa-template.yaml
-          VARS: .nais/q6.json
+          env:
+            APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+            PRINT_PAYLOAD: true
+            CLUSTER: dev-fss
+            RESOURCE: .nais/qa-template.yaml
+            VARS: .nais/q6.json
 
   deploy-prod:
     name: Deploy to prod
