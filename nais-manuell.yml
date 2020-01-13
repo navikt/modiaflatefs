@@ -1,13 +1,16 @@
+#  For manuell deploy oppdater "image" og kjør følgende kommando.
+#  NB!!! Pass på at kubectl context er korrekt først.
+#  kubectl apply -f nais-manuell.yml --wait=true
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: modiaflatefs
-  namespace: {{ namespace }}
+  namespace: q0
   cluster: dev-fss
   labels:
     team: personoversikt
 spec:
-  image: {{image}}
+  image: "docker.pkg.github.com/navikt/modiaflatefs/modiaflatefs:f5c5577593011c523f74358dc55831b9284d9f23"
   port: 8080
   team: personoversikt
   liveness:
@@ -27,7 +30,7 @@ spec:
       cpu: 3000m
       memory: 1024Mi
   ingresses:
-    - https://app-{{ namespace }}.adeo.no/modiaflatefs
+    - https://app-q1.adeo.no/modiaflatefs
   replicas:
     min: 2
     max: 4
@@ -35,7 +38,7 @@ spec:
   vault:
     enabled: true
     paths:
-      - kvPath: /credential/data/dev/isso-rp-user-{{ namespace }}
+      - kvPath: /credential/data/dev/isso-rp-user-q0
         mountPath: /var/run/secrets/nais.io/isso-rp-user
       - kvPath: /serviceuser/data/dev/srvmodiaflatefs
         mountPath: /var/run/secrets/nais.io/service_user
@@ -49,4 +52,4 @@ spec:
     - name: ISSO_JWKS_URL
       value: "https://isso-q.adeo.no/isso/oauth2/connect/jwk_uri"
     - name: OIDC_REDIRECT_URL
-      value: "https://app-{{ namespace }}.adeo.no/veilarblogin/api/login"
+      value: "https://app-q1.adeo.no/veilarblogin/api/login"
