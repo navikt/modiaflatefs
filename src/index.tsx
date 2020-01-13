@@ -7,7 +7,7 @@ import App from './app';
 
 import './index.less';
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.REACT_APP_MOCK === 'true') {
     console.log('Med mock'); // tslint:disable-line no-console
     require('./mocks'); // tslint:disable-line
 }

@@ -5,11 +5,10 @@
   "homepage": "/modiaflatefs",
   "proxy": "http://localhost:8080",
   "scripts": {
-    "start": "npm run build-tekster & react-scripts start",
-    "build": "npm run build-tekster & react-scripts build",
+    "start": "npm run build-tekster & cross-env REACT_APP_MOCK=true craco start",
+    "build": "npm run build-tekster & cross-env REACT_APP_MOCK=false craco build",
     "build-tekster": "node ./build-tekster.js",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "test": "echo not implemented",
     "test:coverage": "echo not implemented",
     "lint": "echo not implemented, part of the build script"
   },
@@ -30,7 +29,10 @@
     "react-intl": "2.4.0"
   },
   "devDependencies": {
-    "@nutgaard/react-scripts": "0.0.8-beta.4",
+    "@craco/craco": "^5.2.4",
+    "craco-less": "^1.9.0",
+    "react-scripts": "3.3.0",
+    "cross-env": "^6.0.3",
     "@types/classnames": "^2.2.3",
     "@types/jest": "^22.2.3",
     "@types/node": "^10.0.6",
@@ -41,5 +43,11 @@
     "path-to-regexp": "2.1.0",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
