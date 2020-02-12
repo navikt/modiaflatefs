@@ -10,7 +10,7 @@ import { oppdaterKontekstHolder } from './enhet-context/context-api';
 function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     const enhetId = aktivEnhet.enhet.enhetId;
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
-    const syfoUrl = erstattMiljoPlaceholder('https://app{{miljoStreng}}.adeo.no/sykefravaersoppfoelging');
+    const syfoUrl = erstattMiljoPlaceholderNais('https://syfooversikt.{{miljoStreng}}/enhet');
     const rekrutteringsbistandUrl = erstattMiljoPlaceholderNais('https://rekrutteringsbistand.{{miljoStreng}}/');
 
     const handleOnChange = (event) => {
