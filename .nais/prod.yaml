@@ -9,6 +9,7 @@ metadata:
 spec:
   image: {{image}}
   port: 8080
+  webproxy: true
   team: personoversikt
   liveness:
     path: /modiaflatefs/internal/isAlive
