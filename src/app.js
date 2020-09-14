@@ -14,10 +14,7 @@ import tekster from './tekster'
 
 const corId = '0000-0000-0000-0000'.replace(/0/g, (a, i) => { return Math.round(Math.random()*16).toString(16); });
 function log(message) {
-    window.frontendlogger.info({
-        corId,
-        message
-    });
+    window.frontendlogger.info(`[CorId: ${corId}] ${message}`);
 }
 
 addLocaleData(nb);
