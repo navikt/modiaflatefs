@@ -12,6 +12,14 @@ import { initiellState } from './modell';
 import { hentVeilederinfo, hentEnheter } from './statisk-data-api';
 import tekster from './tekster'
 
+const corId = '0000-0000-0000-0000'.replace(/0/g, (a, i) => { return Math.round(Math.random()*16).toString(16); });
+function log(message) {
+    window.frontendlogger.info({
+        corId,
+        message
+    });
+}
+
 addLocaleData(nb);
 
 class Application extends Component {
@@ -27,6 +35,7 @@ class Application extends Component {
     componentDidMount() {
         hentEnheter()
             .then((res) => {
+                log(`Hentet enheter: ${res.enhetliste.length}`);
                 this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } }, this.doHentAktivEnhet);
             })
             .catch((err) => this.apiKallFeilet(err));
@@ -56,6 +65,7 @@ class Application extends Component {
 
     oppdaterAktivEnhet(enhetId) {
         const harTilgangPaEnhet = this.state.enheter.enhetliste.map((enhet) => enhet.enhetId).indexOf(enhetId) >= 0;
+        log(`Oppdater aktiv enhet: ${enhetId} har tilgang: ${harTilgangPaEnhet} evt. initiell enhet ${this.state.enheter.enhetliste[0]}`);
         if (!enhetId || enhetId === '' || !harTilgangPaEnhet) {
             const initiellEnhet = this.state.enheter.enhetliste[0];
             this.settInitiellAktivEnhet(initiellEnhet);
@@ -69,12 +79,14 @@ class Application extends Component {
     }
 
     doHentAktivEnhet() {
+        log(`Henter aktiv enhet`);
         return hentAktivEnhet()
             .then(this.oppdaterAktivEnhet)
             .catch((err) => this.apiKallFeilet(err));
     }
 
     apiKallFeilet(err) {
+        log(`Api feilet: ${err.toString()}`);
         window.frontendlogger.error(error.toString());
         this.setState({ apiKallFeilet: true });
         console.error(err); // eslint-disable-line no-console
