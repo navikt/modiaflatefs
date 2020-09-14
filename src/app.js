@@ -87,7 +87,7 @@ class Application extends Component {
 
     apiKallFeilet(err) {
         log(`Api feilet: ${err.toString()}`);
-        window.frontendlogger.error(error.toString());
+        window.frontendlogger.error(err.toString());
         this.setState({ apiKallFeilet: true });
         console.error(err); // eslint-disable-line no-console
     }
