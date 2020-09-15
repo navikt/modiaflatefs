@@ -13,8 +13,8 @@ import { hentVeilederinfo, hentEnheter } from './statisk-data-api';
 import tekster from './tekster'
 
 const corId = '0000-0000-0000-0000'.replace(/0/g, (a, i) => { return Math.round(Math.random()*16).toString(16); });
-function log(message) {
-    window.frontendlogger.info(`[CorId: ${corId}] ${message}`);
+function logmsg(message) {
+    return `[CorId: ${corId}] ${message}`;
 }
 
 addLocaleData(nb);
@@ -30,15 +30,19 @@ class Application extends Component {
     }
 
     componentDidMount() {
+        window.frontendlogger.info(logmsg('Page render'));
         hentEnheter()
             .then((res) => {
-                log(`Hentet enheter: ${res.enhetliste.length}`);
+                window.frontendlogger.info(logmsg(`Hentet enheter: ${res.enhetliste.length}`));
                 this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } }, this.doHentAktivEnhet);
             })
-            .catch((err) => this.apiKallFeilet(err));
+            .catch((err) => this.apiKallFeilet('hentEnheter', err));
         hentVeilederinfo()
-            .then((res) => this.setState({ veilederinfo: { veileder: res, status: STATUS.OK } }))
-            .catch((err) => this.apiKallFeilet(err));
+            .then((res) => {
+                window.frontendlogger.info(logmsg(`Hentet veilederinfo`));
+                this.setState({ veilederinfo: { veileder: res, status: STATUS.OK } })
+            })
+            .catch((err) => this.apiKallFeilet('hentVeilederInfo', err));
     }
 
     settInitiellAktivEnhet(enhet) {
@@ -62,7 +66,7 @@ class Application extends Component {
 
     oppdaterAktivEnhet(enhetId) {
         const harTilgangPaEnhet = this.state.enheter.enhetliste.map((enhet) => enhet.enhetId).indexOf(enhetId) >= 0;
-        log(`Oppdater aktiv enhet: ${enhetId} har tilgang: ${harTilgangPaEnhet} evt. initiell enhet ${this.state.enheter.enhetliste[0]}`);
+        window.frontendlogger.info(logmsg(`Oppdater aktiv enhet: ${enhetId} har tilgang: ${harTilgangPaEnhet} evt. initiell enhet ${JSON.stringify(this.state.enheter.enhetliste[0])}`));
         if (!enhetId || enhetId === '' || !harTilgangPaEnhet) {
             const initiellEnhet = this.state.enheter.enhetliste[0];
             this.settInitiellAktivEnhet(initiellEnhet);
@@ -76,15 +80,14 @@ class Application extends Component {
     }
 
     doHentAktivEnhet() {
-        log(`Henter aktiv enhet`);
+        window.frontendlogger.info(logmsg(`Henter aktiv enhet`));
         return hentAktivEnhet()
             .then(this.oppdaterAktivEnhet)
-            .catch((err) => this.apiKallFeilet(err));
+            .catch((err) => this.apiKallFeilet('hentAktivEnhet', err));
     }
 
-    apiKallFeilet(err) {
-        log(`Api feilet: ${err.toString()}`);
-        window.frontendlogger.error(err.toString());
+    apiKallFeilet(api, err) {
+        window.frontendlogger.error(logmsg(`Api (${api}) feilet: ${err.toString()}`));
         this.setState({ apiKallFeilet: true });
         console.error(err); // eslint-disable-line no-console
     }
