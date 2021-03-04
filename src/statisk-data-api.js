@@ -9,10 +9,6 @@ const MED_CREDENTIALS = {
     }
 };
 
-export function hentVeilederinfo() {
-    return fetchToJson('/veilarbveileder/api/veileder/me', MED_CREDENTIALS);
-}
-
-export function hentEnheter() {
-    return fetchToJson('/veilarbveileder/api/veileder/enheter', MED_CREDENTIALS);
+export function hentBrukerdata() {
+    return fetchToJson('/modiacontextholder/api/decorator', MED_CREDENTIALS);
 }

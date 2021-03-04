@@ -7,7 +7,7 @@ import Innholdslaster from './innholdslaster';
 import { hentAktivEnhet, oppdaterKontekstHolder } from './enhet-context/context-api';
 import EnhetContext from './enhet-context/enhet-context';
 import { initiellState } from './modell';
-import { hentVeilederinfo, hentEnheter } from './statisk-data-api';
+import { hentBrukerdata } from './statisk-data-api';
 
 const corId = '0000-0000-0000-0000'.replace(/0/g, () => { return Math.round(Math.random()*16).toString(16); });
 function log(message) {
@@ -25,14 +25,13 @@ class Application extends Component {
     }
 
     componentDidMount() {
-        hentEnheter()
+        hentBrukerdata()
             .then((res) => {
-                log(`Hentet enheter: ${res.enhetliste.length}`);
-                this.setState({ enheter: { status: STATUS.OK, enhetliste: res.enhetliste } }, this.doHentAktivEnhet);
+                this.setState({
+                    enheter: { status: STATUS.OK, enhetliste: res.enheter },
+                    veilederinfo: { status: STATUS.OK, veileder: res }
+                }, this.doHentAktivEnhet);
             })
-            .catch((err) => this.apiKallFeilet(err));
-        hentVeilederinfo()
-            .then((res) => this.setState({ veilederinfo: { veileder: res, status: STATUS.OK } }))
             .catch((err) => this.apiKallFeilet(err));
     }
 
