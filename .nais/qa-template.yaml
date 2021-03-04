@@ -29,6 +29,7 @@ spec:
       memory: 1024Mi
   ingresses:
     - https://app-{{ namespace }}.adeo.no/modiaflatefs
+    - https://modia-{{ namespace }}.dev.adeo.no/modiaflatefs
   replicas:
     min: 2
     max: 4
