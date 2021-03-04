@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { IntlProvider, addLocaleData, FormattedMessage } from 'react-intl';
-import nb from 'react-intl/locale-data/nb';
 import Feilside500 from './feilsider/500';
 import Oppstartsbilde from './oppstartsbilde';
 import { STATUS } from './utils';
@@ -10,14 +8,11 @@ import { hentAktivEnhet, oppdaterKontekstHolder } from './enhet-context/context-
 import EnhetContext from './enhet-context/enhet-context';
 import { initiellState } from './modell';
 import { hentVeilederinfo, hentEnheter } from './statisk-data-api';
-import tekster from './tekster'
 
-const corId = '0000-0000-0000-0000'.replace(/0/g, (a, i) => { return Math.round(Math.random()*16).toString(16); });
+const corId = '0000-0000-0000-0000'.replace(/0/g, () => { return Math.round(Math.random()*16).toString(16); });
 function log(message) {
     window.frontendlogger.info(`[CorId: ${corId}] ${message}`);
 }
-
-addLocaleData(nb);
 
 class Application extends Component {
     constructor(props) {
@@ -101,33 +96,31 @@ class Application extends Component {
         }
 
         return (
-            <IntlProvider defaultLocale="nb" locale="nb" messages={tekster.nb}>
-                <div className="modiaflatefs blokk-xl">
-                    <NAVLogo />
-                    <div className="tittel blokk-xl">
-                        <FormattedMessage id="modiaoppstartsbilde.tittel" />
-                    </div>
-                    <Innholdslaster avhengigheter={avhengigheter}>
-                        {
-                            ([enheter, veilederinfo, aktivEnhet]) => (
-                                <div>
-                                    <EnhetContext
-                                        veilederIdent={veilederinfo.veileder.ident}
-                                        aktivEnhet={aktivEnhet}
-                                        hentAktivEnhet={this.doHentAktivEnhet}
-                                    />
-                                    <Oppstartsbilde
-                                        enheter={enheter.enhetliste}
-                                        aktivEnhet={aktivEnhet}
-                                        settAktivEnhet={this.settAktivEnhet}
-                                        veilederinfo={veilederinfo}
-                                    />
-                                </div>
-                            )
-                        }
-                    </Innholdslaster>
+            <div className="modiaflatefs blokk-xl">
+                <NAVLogo />
+                <div className="tittel blokk-xl">
+                    Modia
                 </div>
-            </IntlProvider>
+                <Innholdslaster avhengigheter={avhengigheter}>
+                    {
+                        ([enheter, veilederinfo, aktivEnhet]) => (
+                            <div>
+                                <EnhetContext
+                                    veilederIdent={veilederinfo.veileder.ident}
+                                    aktivEnhet={aktivEnhet}
+                                    hentAktivEnhet={this.doHentAktivEnhet}
+                                />
+                                <Oppstartsbilde
+                                    enheter={enheter.enhetliste}
+                                    aktivEnhet={aktivEnhet}
+                                    settAktivEnhet={this.settAktivEnhet}
+                                    veilederinfo={veilederinfo}
+                                />
+                            </div>
+                        )
+                    }
+                </Innholdslaster>
+            </div>
         );
     }
 }

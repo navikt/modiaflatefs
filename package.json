@@ -5,9 +5,8 @@
   "homepage": "/modiaflatefs",
   "proxy": "http://localhost:8080",
   "scripts": {
-    "start": "npm run build-tekster & cross-env REACT_APP_MOCK=true craco start",
-    "build": "npm run build-tekster & cross-env REACT_APP_MOCK=false craco build",
-    "build-tekster": "node ./build-tekster.js",
+    "start": "cross-env REACT_APP_MOCK=true craco start",
+    "build": "cross-env REACT_APP_MOCK=false craco build",
     "test": "echo not implemented",
     "test:coverage": "echo not implemented",
     "lint": "echo not implemented, part of the build script"
@@ -25,8 +24,7 @@
     "prop-types": "15.6.1",
     "query-string": "5.0.1",
     "react": "16.3.2",
-    "react-dom": "16.3.2",
-    "react-intl": "2.4.0"
+    "react-dom": "16.3.2"
   },
   "devDependencies": {
     "@craco/craco": "^5.2.4",
