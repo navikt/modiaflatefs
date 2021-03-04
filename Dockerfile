@@ -1,2 +1,2 @@
-FROM docker.pkg.github.com/navikt/pus-fss-frontend/pus-fss-frontend:5a6fc07a1e4496988d272c145a78f3d5712c1d44
+FROM docker.pkg.github.com/navikt/pus-fss-frontend/pus-fss-frontend:ecd23b296051ce8d436025e242b79521d9244b32
 COPY build /app/public
