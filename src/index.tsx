@@ -1,10 +1,7 @@
 import 'babel-polyfill';
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
 import App from './app';
-
 import './index.less';
 
 if (process.env.REACT_APP_MOCK === 'true') {

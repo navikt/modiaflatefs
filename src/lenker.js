@@ -1,40 +1,39 @@
 import React from 'react';
 import PT from 'prop-types';
-import { injectIntl, intlShape } from 'react-intl';
 
-function Lenker({ enhet, minoversikt, modia, rekrutteringsbistand, sykefravaer, intl }) {
+function Lenker({ enhet, minoversikt, modia, rekrutteringsbistand, sykefravaer }) {
     return (
         <div className="lenker">
             <div className="lenker__kolonne">
                 <div className="lenker__celle">
                     <a className="lenke lenke--frittstaende" href={modia}>
-                        {intl.formatMessage({ id: 'lenke.modiabrukerdialog' })}
+                        Personoversikt
                     </a>
                 </div>
             </div>
             <div className="lenker__kolonne">
                 <div className="lenker__celle">
                     <a className="lenke lenke--frittstaende" href={enhet}>
-                        {intl.formatMessage({ id: 'lenke.portefolje' })}
+                        Enhetens oversikt
                     </a>
                 </div>
                 <div className="lenker__celle">
                     <a className="lenke lenke--frittstaende" href={minoversikt}>
-                        {intl.formatMessage({ id: 'lenke.portefolje.minoversikt' })}
+                        Min oversikt
                     </a>
                 </div>
             </div>
             <div className="lenker__kolonne">
                 <div className="lenker__celle">
                     <a className="lenke lenke--frittstaende" href={sykefravaer}>
-                        {intl.formatMessage({ id: 'lenke.sykefravear' })}
+                        Sykefravær
                     </a>
                 </div>
             </div>
             <div className="lenker__kolonne">
                 <div className="lenker__celle">
                     <a className="lenke lenke--frittstaende" href={rekrutteringsbistand}>
-                        {intl.formatMessage({ id: 'lenke.rekrutteringsbistand' })}
+                        Rekrutteringsbistand
                     </a>
                 </div>
             </div>
@@ -47,8 +46,7 @@ Lenker.propTypes = {
     minoversikt: PT.string.isRequired,
     modia: PT.string.isRequired,
     rekrutteringsbistand: PT.string.isRequired,
-    sykefravaer: PT.string.isRequired,
-    intl: intlShape.isRequired
+    sykefravaer: PT.string.isRequired
 };
 
-export default injectIntl(Lenker);
+export default Lenker;

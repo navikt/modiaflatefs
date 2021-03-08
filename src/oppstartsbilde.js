@@ -1,6 +1,5 @@
 import React from 'react';
 import PT from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import Lenker from './lenker';
 import { erstattMiljoPlaceholder, erstattMiljoPlaceholderNais } from './utils';
 import { aktivEnhetShape, enhetlisteShape } from './modell';
@@ -22,10 +21,7 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     return (
         <div>
             <div className="velkomstmelding blokk-l">
-                <FormattedMessage
-                    id="modia.velkomstmelding"
-                    values={{ navn: veilederinfo.veileder.navn, ident: veilederinfo.veileder.ident }}
-                />
+                Hei, {veilederinfo.veileder.navn} ({veilederinfo.veileder.ident}) velg enhet og hva du vil jobbe med
             </div>
             <div className="enhetsvelger__wrapper blokk-l">
                 <select // eslint-disable-line jsx-a11y/no-onchange
