@@ -1,2 +1,2 @@
-FROM docker.pkg.github.com/navikt/pus-fss-frontend/pus-fss-frontend:ecd23b296051ce8d436025e242b79521d9244b32
+FROM docker.pkg.github.com/navikt/modialogin/frontend:01d7dda81a8611288bf7d20b9145e35a1549346f-beta
 COPY build /app/public
