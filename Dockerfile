@@ -1,2 +1,2 @@
-FROM docker.pkg.github.com/navikt/modialogin/frontend:0e66ae09a2bf25beec75a1d314cbedd0dc0b55a8-beta
+FROM docker.pkg.github.com/navikt/modialogin/frontend:481430eeb101cb2ee66478e1f95002c5f324eda8-beta
 COPY build /app
