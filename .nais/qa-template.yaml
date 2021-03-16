@@ -17,9 +17,6 @@ spec:
   readiness:
     path: /modiaflatefs/internal/isReady
     initialDelay: 20
-  prometheus:
-    enabled: true
-    path: /modiaflatefs/internal/metrics
   resources:
     requests:
       cpu: 200m
@@ -28,7 +25,7 @@ spec:
       cpu: 3000m
       memory: 1024Mi
   ingresses:
-    - https://modia-{{ namespace }}.dev.adeo.no/modiaflatefs
+    - https://app-{{ namespace }}.adeo.no/modiaflatefs
   replicas:
     min: 2
     max: 4
