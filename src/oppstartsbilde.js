@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 import Lenker from './lenker';
-import { erstattMiljoPlaceholder, erstattMiljoPlaceholderNais } from './utils';
+import { erstattMiljoPlaceholder, erstattMiljoPlaceholderNais, erstattMiljoPlaceholderNaisIntern } from './utils';
 import { aktivEnhetShape, enhetlisteShape } from './modell';
 import { oppdaterKontekstHolder } from './enhet-context/context-api';
 
@@ -9,7 +9,7 @@ import { oppdaterKontekstHolder } from './enhet-context/context-api';
 function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     const enhetId = aktivEnhet.enhet.enhetId;
     const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
-    const syfoUrl = erstattMiljoPlaceholderNais('https://syfooversikt.{{miljoStreng}}/enhet');
+    const syfoUrl = erstattMiljoPlaceholderNaisIntern('https://syfooversikt.{{miljoStreng}}/enhet');
     const rekrutteringsbistandUrl = erstattMiljoPlaceholderNais('https://rekrutteringsbistand.{{miljoStreng}}/');
 
     const handleOnChange = (event) => {
