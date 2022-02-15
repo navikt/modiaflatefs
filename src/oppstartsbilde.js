@@ -24,7 +24,7 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
                 Hei, {veilederinfo.veileder.navn} ({veilederinfo.veileder.ident}) velg enhet og hva du vil jobbe med
             </div>
             <div className="enhetsvelger__wrapper blokk-l">
-                <select // eslint-disable-line jsx-a11y/no-onchange
+                <select
                     className="enhetsvelger"
                     onChange={(event) => (handleOnChange(event))}
                     value={enheter.map((e) => e.enhetId).find((id) => id === enhetId)}
