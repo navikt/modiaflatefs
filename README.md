@@ -9,10 +9,12 @@ $ npm install
 $ npm start
 ```
 
-# Henvendelser
+## Henvendelser
 
-Spørsmål knyttet til koden eller prosjektet kan stilles via issues her på github.
+Spørsmål knyttet til koden eller prosjektet kan rettes mot:
 
-## For NAV-ansatte
+[Team Personoversikt](https://github.com/navikt/info-team-personoversikt)
 
-Interne henvendelser kan sendes via Slack i kanalen #team-oppfølging.
+### For NAV-ansatte
+
+Henvendelser kan sendes via Slack i kanalen #team-personoversikt.
