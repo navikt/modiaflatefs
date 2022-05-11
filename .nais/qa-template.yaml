@@ -23,7 +23,7 @@ spec:
       memory: 256Mi
     limits:
       cpu: 2000m
-      memory: 512Mi
+      memory: 1024Mi
   ingresses:
     - https://app-{{ q_env }}.adeo.no/modiaflatefs
   replicas:
