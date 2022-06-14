@@ -1,2 +1,2 @@
-FROM ghcr.io/navikt/modialogin/modialogin-frontend:099a9a1ab44340afdf95514439672bf959708603-beta
+FROM ghcr.io/navikt/modialogin/modialogin-frontend:43c212f28aaa1e720509ed8be19598da7c4795ee-beta
 COPY build /www
