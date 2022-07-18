@@ -1,0 +1,9 @@
+[
+  {
+    "prefix": "proxy/modiacontextholder",
+    "url": "http://modiacontextholder$env{MILJO_SUFFIX}.personoversikt.svc.nais.local/modiacontextholder",
+    "rewriteDirectives": [
+      "SET_ON_BEHALF_OF_TOKEN $env{NAIS_CLUSTER_NAME} personoversikt modiacontextholder$env{MILJO_SUFFIX}"
+    ]
+  }
+]

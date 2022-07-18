@@ -39,6 +39,8 @@ spec:
       value: "modiaflatefs"
     - name: APP_VERSION
       value: "{{ version }}"
+    - name: MILJO_SUFFIX
+      value: "-{{ q_env }}"
     - name: IDP_DISCOVERY_URL
       value: "https://isso-q.adeo.no/isso/oauth2/.well-known/openid-configuration"
     - name: IDP_CLIENT_ID
