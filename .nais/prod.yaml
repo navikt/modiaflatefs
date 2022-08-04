@@ -33,10 +33,10 @@ spec:
     min: 2
     max: 4
     cpuThresholdPercentage: 60
-#  azure:
-#    application:
-#      enabled: true
-#      tenant: nav.no
+  azure:
+    application:
+      enabled: true
+      tenant: nav.no
   env:
     - name: APP_NAME
       value: "modiaflatefs"
