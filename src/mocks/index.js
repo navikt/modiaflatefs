@@ -32,17 +32,17 @@ const aktivEnhet = {
     aktivBruker: null
 };
 
-mock.get('/modiacontextholder/api/decorator', (req, res, ctx) => res(
+mock.get('/modiaflatefs/proxy/modiacontextholder/api/decorator', (req, res, ctx) => res(
     ctx.delay(1000),
     ctx.json(me))
 );
 
-mock.get('/modiacontextholder/api/context/aktivenhet', (req, res, ctx) => res(
+mock.get('/modiaflatefs/proxy/modiacontextholder/api/context/aktivenhet', (req, res, ctx) => res(
     ctx.delay(1000),
     ctx.json(aktivEnhet))
 );
 
-mock.post('/modiacontextholder/api/context', (req, res, ctx) => res(
+mock.post('/modiaflatefs/proxy/modiacontextholder/api/context', (req, res, ctx) => res(
     ctx.delay(1000),
     ctx.json({}))
 );
