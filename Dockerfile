@@ -1,4 +1,4 @@
-FROM ghcr.io/navikt/modialogin/modialogin-frontend:80b8cc67d357c45d8e372341f42d294c4afc5bf5
+FROM ghcr.io/navikt/modialogin/modialogin-frontend:486149d77668084f0f19510c27cf2aa941004f40-beta
 
-#ADD proxy-config.json /proxy-config.json
+ADD proxy-config.json /proxy-config.json
 COPY build /www

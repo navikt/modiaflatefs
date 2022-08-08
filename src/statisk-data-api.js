@@ -10,5 +10,5 @@ const MED_CREDENTIALS = {
 };
 
 export function hentBrukerdata() {
-    return fetchToJson('/modiacontextholder/api/decorator', MED_CREDENTIALS);
+    return fetchToJson('/modiaflatefs/proxy/modiacontextholder/api/decorator', MED_CREDENTIALS);
 }
