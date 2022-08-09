@@ -1,0 +1,51 @@
+.feilmelding {
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  padding-top: 160px;
+  color: #3e3832;
+  background: #f1f1f1;
+  line-height: 1.4em;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.feilmelding .diger {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #a7a7a7;
+  margin-bottom: 1em;
+}
+.feilmelding .tekst {
+  margin: 0 0 0 0;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+.feilmelding .info {
+  font-size: 0.8rem;
+  color: #a7a7a7;
+}
+.feilmelding .strek {
+  margin: 0 auto;
+}
+.feilmelding .strek:before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  border-bottom: 1px solid #a7a7a7;
+}
+.feilmelding .knapp-link-liten {
+  text-decoration: none;
+  border-color: #049cdb;
+  background: #008fc4;
+  color: #fff;
+  padding: 0.4rem 1rem 0.5rem;
+  font-size: 14px;
+  line-height: 1.4rem;
+}
+.feilmelding a:hover,
+.feilmelding a:focus {
+  border-color: #0064cd;
+  background: #0067c5;
+  color: #fff;
+}

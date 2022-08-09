@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import './feil.css';
 
 function Feilside500() {
     return (
