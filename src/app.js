@@ -12,7 +12,7 @@ import { hentBrukerdata } from './statisk-data-api';
 
 const corId = '0000-0000-0000-0000'.replace(/0/g, () => { return Math.round(Math.random()*16).toString(16); });
 function log(message) {
-    Sentry.captureMessage(`[CorId: ${corId}] ${message}`);
+    Sentry.captureMessage(`[CorId: ${corId}] ${message}`, 'info');
     window.frontendlogger.info(`[CorId: ${corId}] ${message}`);
 }
 
