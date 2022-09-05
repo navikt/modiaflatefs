@@ -3,6 +3,7 @@ import 'react-app-polyfill/stable';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './app';
+import './sentry';
 import './nav-frontend.css';
 import './index.css';
 
