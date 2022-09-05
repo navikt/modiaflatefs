@@ -10,12 +10,6 @@ import EnhetContext from './enhet-context/enhet-context';
 import { initiellState } from './modell';
 import { hentBrukerdata } from './statisk-data-api';
 
-const corId = '0000-0000-0000-0000'.replace(/0/g, () => { return Math.round(Math.random()*16).toString(16); });
-function log(message) {
-    Sentry.captureMessage(`[CorId: ${corId}] ${message}`, 'info');
-    window.frontendlogger.info(`[CorId: ${corId}] ${message}`);
-}
-
 class Application extends Component {
     constructor(props) {
         super(props);
@@ -58,7 +52,6 @@ class Application extends Component {
 
     oppdaterAktivEnhet(enhetId) {
         const harTilgangPaEnhet = this.state.enheter.enhetliste.map((enhet) => enhet.enhetId).indexOf(enhetId) >= 0;
-        log(`Oppdater aktiv enhet: ${enhetId} har tilgang: ${harTilgangPaEnhet} evt. initiell enhet ${this.state.enheter.enhetliste[0]}`);
         if (!enhetId || enhetId === '' || !harTilgangPaEnhet) {
             const initiellEnhet = this.state.enheter.enhetliste[0];
             this.settInitiellAktivEnhet(initiellEnhet);
@@ -72,16 +65,13 @@ class Application extends Component {
     }
 
     doHentAktivEnhet() {
-        log(`Henter aktiv enhet`);
         return hentAktivEnhet()
             .then(this.oppdaterAktivEnhet)
             .catch((err) => this.apiKallFeilet(err));
     }
 
     apiKallFeilet(err) {
-        log(`Api feilet: ${err.toString()}`);
         Sentry.captureException(err);
-        window.frontendlogger.error(err.toString());
         this.setState({ apiKallFeilet: true });
         console.error(err); // eslint-disable-line no-console
     }
