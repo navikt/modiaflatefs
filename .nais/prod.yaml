@@ -62,5 +62,5 @@ spec:
       value: "default-src 'self';\
       script-src 'self' 'unsafe-inline';\
       font-src 'self' data:;\
-      connect-src 'self' wss://veilederflatehendelser.adeo.no;\
+      connect-src 'self' wss://veilederflatehendelser.adeo.no sentry.gc.nav.no;\
       report-uri /frontendlogger/api/warn;"
