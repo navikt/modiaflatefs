@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as Sentry from "@sentry/browser";
 import Feilside500 from './feilsider/500';
 import Oppstartsbilde from './oppstartsbilde';
 import { STATUS } from './utils';
@@ -11,6 +12,7 @@ import { hentBrukerdata } from './statisk-data-api';
 
 const corId = '0000-0000-0000-0000'.replace(/0/g, () => { return Math.round(Math.random()*16).toString(16); });
 function log(message) {
+    Sentry.captureMessage(`[CorId: ${corId}] ${message}`);
     window.frontendlogger.info(`[CorId: ${corId}] ${message}`);
 }
 
@@ -78,6 +80,7 @@ class Application extends Component {
 
     apiKallFeilet(err) {
         log(`Api feilet: ${err.toString()}`);
+        Sentry.captureException(err);
         window.frontendlogger.error(err.toString());
         this.setState({ apiKallFeilet: true });
         console.error(err); // eslint-disable-line no-console
