@@ -1,5 +1,5 @@
-import * as Sentry from "@sentry/browser";
-import {BrowserTracing} from "@sentry/tracing";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
 
 if (process.env.NODE_ENV === "production") {
     const isProd = window.location.host === 'app.adeo.no';
