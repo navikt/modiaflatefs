@@ -20,5 +20,5 @@ export function oppdaterKontekstHolder(enhet) {
             verdi: enhet,
             eventType: 'NY_AKTIV_ENHET'
         })
-    });
+    }).catch(() => {}); // Ignore
 }
