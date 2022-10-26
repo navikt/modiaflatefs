@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as Sentry from "@sentry/browser";
-import Feilside500 from './feilsider/500';
+import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import Oppstartsbilde from './oppstartsbilde';
 import { STATUS } from './utils';
 import NAVLogo from './nav-logo';
@@ -9,6 +9,7 @@ import { hentAktivEnhet, oppdaterKontekstHolder } from './enhet-context/context-
 import EnhetContext from './enhet-context/enhet-context';
 import { initiellState } from './modell';
 import { hentBrukerdata } from './statisk-data-api';
+import Lenker from "./lenker";
 
 class Application extends Component {
     constructor(props) {
@@ -84,7 +85,18 @@ class Application extends Component {
         ];
 
         if (this.state.apiKallFeilet) {
-            return <Feilside500 />;
+            return (
+                <div className="modiaflatefs blokk-xl">
+                    <NAVLogo />
+                    <div className="tittel blokk-xl">
+                        Modia
+                    </div>
+                    <AlertStripeAdvarsel className="blokk-m enheter-feiler">
+                        Noe gikk galt med uthenting av dine enheter.
+                    </AlertStripeAdvarsel>
+                    <Lenker />
+                </div>
+            );
         }
 
         return (

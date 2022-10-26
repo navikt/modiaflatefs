@@ -1,18 +1,12 @@
 import React from 'react';
 import PT from 'prop-types';
 import Lenker from './lenker';
-import { erstattMiljoPlaceholder, erstattMiljoPlaceholderNaisIntern } from './utils';
 import { aktivEnhetShape, enhetlisteShape } from './modell';
 import { oppdaterKontekstHolder } from './enhet-context/context-api';
 
 
 function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     const enhetId = aktivEnhet.enhet.enhetId;
-    const modiaUrl = erstattMiljoPlaceholder('https://modapp{{miljoStreng}}.adeo.no/modiabrukerdialog');
-    const syfoUrl = erstattMiljoPlaceholderNaisIntern('https://syfooversikt.{{miljoStreng}}/enhet');
-    const portefoljeflateUrl = erstattMiljoPlaceholderNaisIntern('https://veilarbportefoljeflate.{{miljoStreng}}');
-    const rekrutteringsbistandUrl = erstattMiljoPlaceholderNaisIntern('https://rekrutteringsbistand.{{miljoStreng}}/');
-
     const handleOnChange = (event) => {
         const nyAktivEnhetId = event.currentTarget.value;
         settAktivEnhet(nyAktivEnhetId);
@@ -20,7 +14,7 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
     };
 
     return (
-        <div>
+        <>
             <div className="velkomstmelding blokk-l">
                 Hei, {veilederinfo.veileder.navn} ({veilederinfo.veileder.ident}) velg enhet og hva du vil jobbe med
             </div>
@@ -40,14 +34,8 @@ function Oppstartsbilde({ enheter, aktivEnhet, settAktivEnhet, veilederinfo }) {
                     )}
                 </select>
             </div>
-            <Lenker
-                enhet={`${portefoljeflateUrl}/enhet?enhet=${enhetId}`}
-                minoversikt={`${portefoljeflateUrl}/portefolje?enhet=${enhetId}`}
-                modia={modiaUrl}
-                sykefravaer={syfoUrl}
-                rekrutteringsbistand={rekrutteringsbistandUrl}
-            />
-        </div>
+            <Lenker enhetId={enhetId} />
+        </>
     );
 }
 
