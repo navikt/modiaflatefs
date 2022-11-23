@@ -19,6 +19,11 @@ spec:
   readiness:
     path: /modiaflatefs/internal/isReady
     initialDelay: 20
+  prometheus:
+    enabled: true
+    path: /modiaflatefs/internal/metrics
+  secureLogs:
+    enabled: true
   resources:
     requests:
       cpu: 100m
