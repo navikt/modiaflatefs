@@ -34,8 +34,8 @@ spec:
   ingresses:
     - https://app.adeo.no/modiaflatefs
   replicas:
-    min: 2
-    max: 4
+    min: 4
+    max: 8
     cpuThresholdPercentage: 60
   azure:
     application:
