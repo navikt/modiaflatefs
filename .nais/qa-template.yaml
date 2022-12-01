@@ -45,11 +45,18 @@ spec:
       claims:
         groups:
           - id: "67a06857-0028-4a90-bf4c-9c9a92c7d733" # 0000-GA-BD06_ModiaGenerellTilgang
+  envFrom:
+    - secret: "modiaflatefs-redis-{{ q_env}}"
   env:
     - name: APP_NAME
       value: "modiaflatefs"
     - name: APP_VERSION
       value: "{{ version }}"
+    - name: REDIS_HOST
+      value: "modiaflatefs-redis-{{ q_env}}.personoversikt.svc.nais.local"
+#    Hentes fra `spec.envFrom.secret`
+#    - name: REDIS_PASSWORD
+#      value: ""
     - name: MILJO_SUFFIX
       value: "-{{ q_env }}"
     - name: CSP_DIRECTIVES
@@ -58,5 +65,3 @@ spec:
       font-src 'self' data:;\
       connect-src 'self' wss://veilederflatehendelser-{{ q_env }}.adeo.no sentry.gc.nav.no;\
       report-uri https://sentry.gc.nav.no/api/145/security/?sentry_key=b07212ac0fce4245b88145ad95706ce7&sentry_environment=preprod&sentry_release={{ version }};"
-    - name: DISABLE_OPEN_AM
-      value: "true"
