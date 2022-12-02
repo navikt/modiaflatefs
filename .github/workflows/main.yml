@@ -4,6 +4,7 @@ on:
   push:
     paths-ignore:
       - '.nais/redis.yaml'
+      - '.nais/qa-redis.yaml'
       - '.github/workflows/redis.yaml'
 
 env:

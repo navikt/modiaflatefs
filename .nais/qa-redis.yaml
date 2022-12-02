@@ -7,7 +7,7 @@ metadata:
   annotations:
     "nais.io/run-as-group": "0"
     "nais.io/read-only-file-system": "false"
-  name: modiaflatefs-redis
+  name: modiaflatefs-redis-{{q_env}}
   namespace: personoversikt
 spec:
   image: bitnami/redis:7.0.5
@@ -26,14 +26,14 @@ spec:
     port: 6379
     protocol: redis
   envFrom:
-    - secret: modiaflatefs-redis
+    - secret: modiaflatefs-redis-{{q_env}}
 ---
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   labels:
     team: personoversikt
-  name: modiaflatefs-redis-redisexporter
+  name: modiaflatefs-redis-redisexporter-{{q_env}}
   namespace: personoversikt
 spec:
   image: oliver006/redis_exporter:v1.45.0-alpine
@@ -58,4 +58,4 @@ spec:
     - name: REDIS_EXPORTER_LOG_FORMAT
       value: json
   envFrom:
-    - secret: modiaflatefs-redis
+    - secret: modiaflatefs-redis-{{q_env}}
