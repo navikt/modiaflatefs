@@ -54,7 +54,7 @@ spec:
     path: /health
   env:
     - name: REDIS_ADDR
-      value: modiaflatefs-redis:6379
+      value: modiaflatefs-redis-{{q_env}}:6379
     - name: REDIS_EXPORTER_LOG_FORMAT
       value: json
   envFrom:
