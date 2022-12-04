@@ -1,0 +1,45 @@
+name: Setup Redis application
+
+on:
+  push:
+    paths:
+      - '.github/workflows/qa-redis.yaml'
+      - '.nais/qa-redis.yaml'
+      - '.nais/redis.yaml'
+
+env:
+  CI: true
+  TZ: Europe/Oslo
+
+jobs:
+  setup-redis:
+    name: Setup Redis application
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Q0
+        if: github.ref == 'refs/heads/dev'
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          PRINT_PAYLOAD: true
+          CLUSTER: dev-fss
+          RESOURCE: .nais/qa-redis.yaml
+          VAR: q_env=q0
+      - name: Setup Q1
+        if: github.ref == 'refs/heads/dev'
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          PRINT_PAYLOAD: true
+          CLUSTER: dev-fss
+          RESOURCE: .nais/qa-redis.yaml
+          VAR: q_env=q1
+      - name: Setup prod
+        if: github.ref == 'refs/heads/master'
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          PRINT_PAYLOAD: true
+          CLUSTER: prod-fss
+          RESOURCE: .nais/redis.yaml
