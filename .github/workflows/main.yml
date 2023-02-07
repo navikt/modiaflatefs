@@ -34,7 +34,7 @@ jobs:
 
   build-and-push:
     name: Build and push Docker container
-    if: github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/debug-pub-sub' || github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -60,7 +60,7 @@ jobs:
   deploy-qa:
     name: Deploy to preprod
     needs: build-and-push
-    if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/debug-pub-sub' || github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     strategy:
       matrix:
