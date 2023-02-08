@@ -65,7 +65,7 @@ spec:
       font-src 'self' data:;\
       connect-src 'self' wss://veilederflatehendelser-{{ q_env }}.adeo.no sentry.gc.nav.no;\
       report-uri https://sentry.gc.nav.no/api/145/security/?sentry_key=b07212ac0fce4245b88145ad95706ce7&sentry_environment=preprod&sentry_release={{ version }};"
-#    - name: ENABLE_PERSISTENCE_PUB_SUB
-#      value: "true"
-#    - name: PUBSUB_CHANNEL_NAME
-#      value: "persistence_updates"
+    - name: ENABLE_PERSISTENCE_PUB_SUB
+      value: "true"
+    - name: PUBSUB_CHANNEL_NAME
+      value: "persistence_updates"
