@@ -34,7 +34,7 @@ export function erstattMiljoPlaceholderNais(lenke) {
 export function erstattMiljoPlaceholderNaisIntern(lenke) {
     const miljoStreng = finnMiljoStreng();
     if (miljoStreng) {
-        return lenke.replace('{{miljoStreng}}', 'dev.intern.nav.no');
+        return lenke.replace('{{miljoStreng}}', 'intern.dev.nav.no');
     }
     return lenke.replace('{{miljoStreng}}', 'intern.nav.no');
 }
