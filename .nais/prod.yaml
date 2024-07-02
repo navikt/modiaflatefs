@@ -8,6 +8,8 @@ metadata:
     team: personoversikt
   annotations:
     nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://modiaflate.intern.nav.no/landingpage"
 spec:
   image: {{image}}
   port: 8080
