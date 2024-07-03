@@ -8,11 +8,12 @@ metadata:
     team: personoversikt
   annotations:
     nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://modiapersonoversikt.intern.nav.no/landingpage"
 spec:
   image: {{image}}
   port: 8080
   webproxy: true
-  team: personoversikt
   liveness:
     path: /modiaflatefs/internal/isAlive
     initialDelay: 20
